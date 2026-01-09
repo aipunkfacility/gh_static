@@ -6,7 +6,7 @@ function HeroSection(siteMeta) {
       3. items-center: центрирует по горизонтали
       4. py-16: отступы сверху и снизу, чтобы текст не прилип к самому краю экрана
     -->
-    <section id="hero" class="relative text-white py-36 px-40 text-center flex flex-col justify-between items-center overflow-hidden" style="min-height: 60vh;">
+    <section id="hero" class="relative text-white py-6 px-40 text-center flex flex-col justify-between items-center overflow-hidden" style="min-height: 60vh;">
       
       <!-- ФОН -->
       <div class="absolute inset-0 z-0">
@@ -39,5 +39,6 @@ function HeroSection(siteMeta) {
     </section>
   `;
 }
+
 
 
