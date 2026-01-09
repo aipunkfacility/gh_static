@@ -6,7 +6,7 @@ function HeroSection(siteMeta) {
       2. pb-8 (padding-bottom): Небольшой отступ снизу для кнопок.
       3. px-4: Вернул стандартные боковые отступы (px-40 ломает вид на мобильных).
     -->
-    <section id="hero" class="relative text-white pt-232 pb-128 px-4 text-center flex flex-col justify-between items-center overflow-hidden" style="min-height: 50vh;">
+    <section id="hero" class="relative text-white pt-232 pb-128 px-4 text-center flex flex-col justify-between items-center overflow-hidden" style="min-height: 70vh;">
       
       <!-- ФОН -->
       <div class="absolute inset-0 z-0">
@@ -38,5 +38,6 @@ function HeroSection(siteMeta) {
     </section>
   `;
 }
+
 
 
