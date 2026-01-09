@@ -1,0 +1,20 @@
+[
+  {
+    "id": "office-1",
+    "title": "Офис 1 (Green Hill Resort & Spa)",
+    "slug": "office-green-hill-resort",
+    "description": "Главный офис в резорте. Здесь можно арендовать байк, поменять валюту или заказать трансфер, не выходя за ворота.",
+    "address": "121 Nguyễn Đình Chiểu, Ham Tien",
+    "workTime": "8:00 - 22:00",
+    "isActive": true
+  },
+  {
+    "id": "office-2",
+    "title": "Офис 2",
+    "slug": "office-2",
+    "description": "Дополнительный офис в центре Муйне.",
+    "address": "107 Nguyễn Đình Chiểu, Ham Tien",
+    "workTime": "8:00 - 22:00",
+    "isActive": true
+  }
+][]

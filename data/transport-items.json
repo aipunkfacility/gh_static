@@ -1,0 +1,98 @@
+[
+  {
+    "id": "honda-vision",
+    "title": "Honda Vision",
+    "slug": "honda-vision",
+    "categoryId": "standard",
+    "useCases": "Идеален для новичков и поездок на пляж. Легкий и компактный.",
+    "benefits": ["Легкий в управлении", "Компактный", "Экономичный"],
+    "specs": ["110cc", "Низкий расход", "Место для шлема"],
+    "images": ["https://placehold.co/600x400/e67e22/FFF/png?text=Honda+Vision"],
+    "isPopular": false,
+    "isActive": true
+  },
+  {
+    "id": "honda-lead",
+    "title": "Honda Lead",
+    "slug": "honda-lead",
+    "categoryId": "standard",
+    "useCases": "Любимчик девушек. В багажник влезают два шлема, а на подножку — пакеты с фруктами.",
+    "benefits": ["Большой багажник", "Устойчивый", "Низкая посадка"],
+    "specs": ["125cc", "Автомат", "2 шлема в багажнике"],
+    "images": ["https://placehold.co/600x400/e74c3c/FFF/png?text=Honda+Lead"],
+    "isPopular": true,
+    "isActive": true
+  },
+  {
+    "id": "sym-attila",
+    "title": "Sym Attila",
+    "slug": "sym-attila",
+    "categoryId": "standard",
+    "useCases": "Простой и надежный.",
+    "benefits": ["Надежный", "Простой в обслуживании"],
+    "specs": ["115cc", "Автомат"],
+    "images": ["https://placehold.co/600x400/95a5a6/FFF/png?text=Sym+Attila"],
+    "isPopular": false,
+    "isActive": true
+  },
+  {
+    "id": "honda-airblade",
+    "title": "Honda Airblade",
+    "slug": "honda-airblade",
+    "categoryId": "comfort",
+    "useCases": "Мощнее, устойчивее, подходит для поездок вдвоем и более дальних маршрутов.",
+    "benefits": ["Мощный", "Устойчивый", "Для двоих"],
+    "specs": ["125cc", "Хорошая ветрозащита", "Комфортный"],
+    "images": ["https://placehold.co/600x400/27ae60/FFF/png?text=Honda+Airblade"],
+    "isPopular": true,
+    "isActive": true
+  },
+  {
+    "id": "yamaha-nvx",
+    "title": "Yamaha NVX 155cc",
+    "slug": "yamaha-nvx",
+    "categoryId": "maxi",
+    "useCases": "Спортивный характер. Мощный мотор, широкие колеса, дерзкий дизайн.",
+    "benefits": ["Спортивный дизайн", "Мощный", "Широкие колеса"],
+    "specs": ["155cc", "ABS", "Ветрозащита"],
+    "images": ["https://placehold.co/600x400/2980b9/FFF/png?text=Yamaha+NVX"],
+    "isPopular": true,
+    "isActive": true
+  },
+  {
+    "id": "honda-pcx",
+    "title": "Honda PCX (150/160)",
+    "slug": "honda-pcx",
+    "categoryId": "maxi",
+    "useCases": "Эталон комфорта. Посадка «как в кресле», отличная ветрозащита, огромный запас хода.",
+    "benefits": ["Комфорт как в кресле", "Ветрозащита", "Большой запас хода"],
+    "specs": ["150/160cc", "ABS", "Версия 160 с ABS"],
+    "images": ["https://placehold.co/600x400/34495e/FFF/png?text=Honda+PCX"],
+    "isPopular": true,
+    "isActive": true
+  },
+  {
+    "id": "suzuki-gsx",
+    "title": "Suzuki GSX 150cc",
+    "slug": "suzuki-gsx",
+    "categoryId": "moto",
+    "useCases": "Легкий спортбайк. Идеален для серпантинов и динамичной езды.",
+    "benefits": ["Легкий", "Динамичный", "Для опытных"],
+    "specs": ["150cc", "Механика", "Спортбайк"],
+    "images": ["https://placehold.co/600x400/c0392b/FFF/png?text=Suzuki+GSX"],
+    "isPopular": false,
+    "isActive": true
+  },
+  {
+    "id": "toyota-vios",
+    "title": "Toyota Vios",
+    "slug": "toyota-vios",
+    "categoryId": "car",
+    "useCases": "Если скутер — это не ваша история, или вы путешествуете компанией, аренда авто станет идеальным решением.",
+    "benefits": ["Климат-контроль", "Вместительность 4-5 чел", "Безопасность", "Надежный", "Маневренный"],
+    "specs": ["Коробка: АКПП", "Салон: чистый, без запахов", "Технически исправна", "Багажник"],
+    "images": ["https://placehold.co/600x400/7f8c8d/FFF/png?text=Toyota+Vios"],
+    "isPopular": false,
+    "isActive": true
+  }
+][]

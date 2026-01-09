@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Hill Tours | Экскурсии и сервис в Муйне</title>
+  <meta name="description" content="Муйне: Отдых без забот. Экскурсии, транспорт, проживание и сервисы от местных экспертов">
+  
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FF6400',
+            secondary: '#2D5F3E',
+            dark: '#1A2F5A'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <header id="header" class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+    <nav class="max-w-6xl mx-auto px-4 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-leaf text-secondary text-2xl"></i>
+          <span class="text-xl font-bold text-secondary">GreenHill<span class="text-primary">Tours</span></span>
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a href="#hero" class="font-semibold hover:text-primary transition">Главная</a>
+          <a href="#excursions" class="font-semibold hover:text-primary transition">Экскурсии</a>
+          <a href="#transport" class="font-semibold hover:text-primary transition">Транспорт</a>
+          <a href="#accommodation" class="font-semibold hover:text-primary transition">Жилье</a>
+          <a href="#services" class="font-semibold hover:text-primary transition">Сервисы</a>
+          <a href="#contacts" class="font-semibold hover:text-primary transition">Контакты</a>
+        </div>
+        <button onclick="openWhatsApp()" class="bg-green-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-green-600">
+          <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+        </button>
+      </div>
+    </nav>
+  </header>
+  
+  <main id="app" class="pt-20">
+    <div class="text-center py-20">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      <p class="mt-4 text-gray-600">Загрузка...</p>
+    </div>
+  </main>
+  
+  <footer class="bg-dark text-white py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <div class="flex items-center justify-center space-x-2 mb-4">
+        <i class="fas fa-leaf text-2xl"></i>
+        <span class="text-xl font-bold">GreenHill<span class="text-primary">Tours</span></span>
+      </div>
+      <p class="text-gray-300 mb-4">Муйне: Отдых без забот</p>
+      <p class="text-gray-400 text-sm">© 2024 Green Hill Tours</p>
+    </div>
+  </footer>
+  
+  <button onclick="openWhatsApp()" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full shadow-lg hover:scale-110 transition z-50">
+    <i class="fab fa-whatsapp text-2xl"></i>
+  </button>
+  
+  <script src="./js/components/cards.js"></script>
+  <script src="./js/sections/hero.js"></script>
+  <script src="./js/sections/popular.js"></script>
+  <script src="./js/sections/excursions.js"></script>
+  <script src="./js/sections/transport.js"></script>
+  <script src="./js/sections/accommodation.js"></script>
+  <script src="./js/sections/services.js"></script>
+  <script src="./js/sections/contacts.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
