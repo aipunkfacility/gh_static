@@ -1,5 +1,26 @@
 let siteMeta = {}, excursions = [], transportCategories = [], transportItems = [], accommodations = [], services = [], offices = [];
 
+// Функция загрузки одного файла с retry
+async function fetchWithRetry(url, retries = 2) {
+  for (let i = 0; i <= retries; i++) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${url}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.warn(`Попытка ${i + 1} загрузки ${url} не удалась:`, error.message);
+      if (i === retries) {
+        console.error(`❌ Не удалось загрузить ${url} после ${retries + 1} попыток`);
+        return null; // Возвращаем null вместо ошибки
+      }
+      // Ждём перед повтором (экспоненциальная задержка)
+      await new Promise(resolve => setTimeout(resolve, 1000 * Math.pow(2, i)));
+    }
+  }
+}
+
 async function loadData() {
   try {
     // Проверяем, существует ли контейнер #app
@@ -9,25 +30,35 @@ async function loadData() {
       return;
     }
 
-    // Загружаем все JSON-файлы параллельно
+    // Загружаем все JSON-файлы параллельно с retry
     const [meta, exc, cat, trans, acc, serv, off] = await Promise.all([
-      fetch('./data/site-meta.json').then(r => r.json()),
-      fetch('./data/excursions.json').then(r => r.json()),
-      fetch('./data/transport-categories.json').then(r => r.json()),
-      fetch('./data/transport-items.json').then(r => r.json()),
-      fetch('./data/accommodations.json').then(r => r.json()),
-      fetch('./data/services.json').then(r => r.json()),
-      fetch('./data/offices.json').then(r => r.json())
+      fetchWithRetry('./data/site-meta.json'),
+      fetchWithRetry('./data/excursions.json'),
+      fetchWithRetry('./data/transport-categories.json'),
+      fetchWithRetry('./data/transport-items.json'),
+      fetchWithRetry('./data/accommodations.json'),
+      fetchWithRetry('./data/services.json'),
+      fetchWithRetry('./data/offices.json')
     ]);
     
-    // Сохраняем в глобальные переменные
-    siteMeta = meta; 
-    excursions = exc; 
-    transportCategories = cat;
-    transportItems = trans; 
-    accommodations = acc; 
-    services = serv; 
-    offices = off;
+    // Сохраняем в глобальные переменные (null не ломает)
+    siteMeta = meta || {}; 
+    excursions = exc || []; 
+    transportCategories = cat || [];
+    transportItems = trans || []; 
+    accommodations = acc || []; 
+    services = serv || []; 
+    offices = off || [];
+    
+    console.log('📊 Загружено данных:', {
+      meta: !!meta,
+      excursions: excursions.length,
+      categories: transportCategories.length,
+      transport: transportItems.length,
+      accommodations: accommodations.length,
+      services: services.length,
+      offices: offices.length
+    });
     
     // Собираем всю страницу из секций
     appElement.innerHTML = `
@@ -43,7 +74,7 @@ async function loadData() {
     console.log('✅ Сайт загружен успешно');
 
   } catch (error) {
-    console.error('❌ Ошибка загрузки:', error);
+    console.error('❌ Критическая ошибка загрузки:', error);
     
     const appElement = document.getElementById('app');
     if (appElement) {
