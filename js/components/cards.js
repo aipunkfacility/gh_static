@@ -1,8 +1,8 @@
 function renderCardService(service) {
   return `
     <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
-      <h3 class="text-xl font-bold text-gray-800 mb-3">${service.title}</h3>
-      <p class="text-gray-600 mb-4">${service.shortDescription}</p>
+      <h3 class="text-xl font-bold text-gray-800 mb-3">${escapeHTML(service.title)}</h3>
+      <p class="text-gray-600 mb-4">${escapeHTML(service.shortDescription)}</p>
       <button onclick="openWhatsApp()" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition">
         Заказать
       </button>
@@ -15,21 +15,21 @@ function renderCardTransport(transport, categories) {
   return `
     <div class="bg-white rounded-lg shadow-md overflow-hidden">
       <div class="bg-gray-100 p-4 border-b">
-        <h3 class="text-lg font-bold">${transport.title}</h3>
-        ${category ? `<span class="inline-block mt-2 px-3 py-1 text-sm rounded-full ${getCategoryColor(category.slug)}">${category.title}</span>` : ''}
+        <h3 class="text-lg font-bold">${escapeHTML(transport.title)}</h3>
+        ${category ? `<span class="inline-block mt-2 px-3 py-1 text-sm rounded-full ${getCategoryColor(category.slug)}">${escapeHTML(category.title)}</span>` : ''}
       </div>
       <div class="p-6">
-        <p class="text-gray-600 mb-4">${transport.useCases}</p>
+        <p class="text-gray-600 mb-4">${escapeHTML(transport.useCases)}</p>
         <div class="mb-4">
           <h4 class="font-semibold mb-2">Преимущества:</h4>
           <ul class="list-disc list-inside text-gray-600 text-sm">
-            ${transport.benefits.map(b => `<li>${b}</li>`).join('')}
+            ${transport.benefits.map(b => `<li>${escapeHTML(b)}</li>`).join('')}
           </ul>
         </div>
         <div class="mb-4">
           <h4 class="font-semibold mb-2">Характеристики:</h4>
           <ul class="list-disc list-inside text-gray-600 text-sm">
-            ${transport.specs.map(s => `<li>${s}</li>`).join('')}
+            ${transport.specs.map(s => `<li>${escapeHTML(s)}</li>`).join('')}
           </ul>
         </div>
         <button onclick="openWhatsApp()" class="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-green-600 transition">
@@ -43,30 +43,30 @@ function renderCardTransport(transport, categories) {
 function renderCardAccommodation(acc) {
   return `
     <div class="bg-white rounded-lg shadow-md p-8">
-      <h3 class="text-2xl font-bold mb-4">${acc.title}</h3>
-      <p class="text-gray-600 mb-6">${acc.slogan}</p>
+      <h3 class="text-2xl font-bold mb-4">${escapeHTML(acc.title)}</h3>
+      <p class="text-gray-600 mb-6">${escapeHTML(acc.slogan)}</p>
       
       <div class="mb-4">
         <h4 class="font-semibold mb-2">🏡 Территория:</h4>
-        <p class="text-gray-600">${acc.territoryDescription}</p>
+        <p class="text-gray-600">${escapeHTML(acc.territoryDescription)}</p>
       </div>
       
       <div class="mb-4">
         <h4 class="font-semibold mb-2">🛏 В номерах:</h4>
         <ul class="list-disc list-inside text-gray-600">
-          ${acc.roomFeatures.map(f => `<li>${f}</li>`).join('')}
+          ${acc.roomFeatures.map(f => `<li>${escapeHTML(f)}</li>`).join('')}
         </ul>
       </div>
       
       <div class="mb-4">
         <h4 class="font-semibold mb-2">🍹 Атмосфера:</h4>
-        <p class="text-gray-600">${acc.atmosphere}</p>
+        <p class="text-gray-600">${escapeHTML(acc.atmosphere)}</p>
       </div>
       
       <div class="mb-6">
         <h4 class="font-semibold mb-2">📍 Локация:</h4>
-        <p class="text-gray-600">${acc.locationDescription}</p>
-        <p class="text-gray-800 font-medium mt-1">${acc.address}</p>
+        <p class="text-gray-600">${escapeHTML(acc.locationDescription)}</p>
+        <p class="text-gray-800 font-medium mt-1">${escapeHTML(acc.address)}</p>
       </div>
       
       <button onclick="openWhatsApp()" class="w-full bg-purple-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-purple-600 transition">
@@ -79,15 +79,15 @@ function renderCardAccommodation(acc) {
 function renderCardOffice(office) {
   return `
     <div class="bg-white rounded-lg shadow-md p-6">
-      <h3 class="text-xl font-bold mb-3">${office.title}</h3>
-      <p class="text-gray-600 mb-4">${office.description}</p>
+      <h3 class="text-xl font-bold mb-3">${escapeHTML(office.title)}</h3>
+      <p class="text-gray-600 mb-4">${escapeHTML(office.description)}</p>
       <div class="mb-2">
         <p class="font-semibold">📍 Адрес:</p>
-        <p class="text-gray-600">${office.address}</p>
+        <p class="text-gray-600">${escapeHTML(office.address)}</p>
       </div>
       <div class="mb-4">
         <p class="font-semibold">⏰ Время работы:</p>
-        <p class="text-gray-600">${office.workTime}</p>
+        <p class="text-gray-600">${escapeHTML(office.workTime)}</p>
       </div>
       <button onclick="openWhatsApp()" class="w-full bg-blue-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-blue-600 transition">
         Написать в WhatsApp
