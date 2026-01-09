@@ -57,3 +57,40 @@ function smoothScroll(elementId) {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
+
+// Глобальная функция для открытия WhatsApp чата
+function openWhatsApp(message) {
+  // Используем переданное сообщение или дефолтное
+  const defaultMessage = 'Здравствуйте! У меня вопрос';
+  const finalMessage = message || defaultMessage;
+  
+  // Пытаемся получить номер из siteMeta, если доступен
+  let phoneNumber = '84372733431'; // fallback номер
+  
+  if (typeof siteMeta !== 'undefined' && siteMeta && siteMeta.whatsappNumber) {
+    phoneNumber = siteMeta.whatsappNumber;
+  }
+  
+  const encodedMessage = encodeURIComponent(finalMessage);
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  
+  window.open(whatsappUrl, '_blank');
+}
+
+// Функция для переключения мобильного меню
+function toggleMobileMenu() {
+  const menuButton = document.querySelector('.js-header-menu-toggle');
+  const backdrop = document.querySelector('.HeaderMktg-backdrop');
+  
+  if (menuButton && backdrop) {
+    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', !isExpanded);
+    
+    // Предотвращаем скролл body когда меню открыто
+    if (!isExpanded) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+}
