@@ -27,6 +27,64 @@
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif; }
+    
+    /* Стили для мобильного меню */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: white;
+      z-index: 40;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+    
+    .mobile-menu.active {
+      display: block;
+    }
+    
+    .mobile-menu a {
+      display: block;
+      padding: 1rem;
+      font-weight: 600;
+      border-bottom: 1px solid #e5e7eb;
+      transition: background 0.2s;
+    }
+    
+    .mobile-menu a:hover {
+      background: #f9fafb;
+      color: #FF6400;
+    }
+    
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+    
+    .hamburger span {
+      width: 24px;
+      height: 3px;
+      background: #2D5F3E;
+      transition: all 0.3s;
+      border-radius: 2px;
+    }
+    
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -38,6 +96,8 @@
           <i class="fas fa-leaf text-secondary text-2xl"></i>
           <span class="text-xl font-bold text-secondary">GreenHill<span class="text-primary">Tours</span></span>
         </div>
+        
+        <!-- Десктопное меню -->
         <div class="hidden md:flex space-x-8">
           <a href="#hero" class="font-semibold hover:text-primary transition">Главная</a>
           <a href="#excursions" class="font-semibold hover:text-primary transition">Экскурсии</a>
@@ -46,11 +106,38 @@
           <a href="#services" class="font-semibold hover:text-primary transition">Сервисы</a>
           <a href="#contacts" class="font-semibold hover:text-primary transition">Контакты</a>
         </div>
-        <button onclick="openWhatsApp()" class="bg-green-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-green-600">
-          <i class="fab fa-whatsapp mr-2"></i>WhatsApp
-        </button>
+        
+        <!-- Кнопки справа -->
+        <div class="flex items-center gap-3">
+          <!-- Кнопка WhatsApp (скрыта на мобильных) -->
+          <button onclick="openWhatsApp()" class="hidden md:block bg-green-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-green-600 transition">
+            <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+          </button>
+          
+          <!-- Гамбургер меню (только на мобильных) -->
+          <button id="mobile-menu-toggle" class="md:hidden hamburger" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
     </nav>
+    
+    <!-- Мобильное выдвижное меню -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="#hero" onclick="toggleMobileMenu()">Главная</a>
+      <a href="#excursions" onclick="toggleMobileMenu()">Экскурсии</a>
+      <a href="#transport" onclick="toggleMobileMenu()">Транспорт</a>
+      <a href="#accommodation" onclick="toggleMobileMenu()">Жилье</a>
+      <a href="#services" onclick="toggleMobileMenu()">Сервисы</a>
+      <a href="#contacts" onclick="toggleMobileMenu()">Контакты</a>
+      <div class="mt-4 px-4">
+        <button onclick="openWhatsApp(); toggleMobileMenu();" class="w-full bg-green-500 text-white px-4 py-3 rounded-lg font-bold hover:bg-green-600 transition">
+          <i class="fab fa-whatsapp mr-2"></i>Написать в WhatsApp
+        </button>
+      </div>
+    </div>
   </header>
   
   <main id="app" class="pt-20 min-h-screen">
@@ -87,5 +174,10 @@
   <script src="./js/sections/services.js"></script>
   <script src="./js/sections/contacts.js"></script>
   <script src="./js/main.js"></script>
+  
+  <script>
+    // Инициализация мобильного меню
+    document.getElementById('mobile-menu-toggle').addEventListener('click', toggleMobileMenu);
+  </script>
 </body>
 </html>
