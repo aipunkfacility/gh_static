@@ -1,10 +1,10 @@
 function HeroSection(siteMeta) {
   return `
     <!-- 
-      РЕШЕНИЕ ДЛЯ АДАПТИВА:
-      1. padding-top: 20vh — отступ сверху равен 20% высоты экрана (на мобиле меньше, на ПК больше).
-      2. padding-bottom: 5vh — отступ снизу 5% высоты экрана.
-      3. min-height: 75vh — секция занимает 75% экрана, открывая панораму.
+      ЧИСТЫЙ ВАРИАНТ:
+      1. padding-top: 20vh (20% высоты экрана) — опускает заголовок ниже, чтобы он не перекрывался шапкой сайта.
+      2. padding-bottom: 5vh (5% высоты экрана) — приподнимает кнопки от низа.
+      3. min-height: 75vh — высота блока 75% от экрана (оптимально для 16:9).
     -->
     <section id="hero" 
              class="relative text-white px-4 text-center flex flex-col justify-between items-center overflow-hidden" 
