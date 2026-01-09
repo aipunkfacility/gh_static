@@ -3,8 +3,11 @@
   window.siteMeta = { whatsappNumber: '84372733431' }; // fallback значение
   
   // Функция загрузки одного файла с retry
-  async function fetchWithRetry(url, retries = 2) {
-    for (let i = 0; i <= retries; i++) {
+  async function fetchWithRetry(url, retries) {
+    // Используем CONFIG.RETRY_ATTEMPTS если доступен, иначе fallback
+    const maxRetries = retries !== undefined ? retries : (typeof CONFIG !== 'undefined' && CONFIG.RETRY_ATTEMPTS ? CONFIG.RETRY_ATTEMPTS : 3);
+    
+    for (let i = 0; i <= maxRetries; i++) {
       try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -13,8 +16,8 @@
         return await response.json();
       } catch (error) {
         console.warn(`Попытка ${i + 1} загрузки ${url} не удалась:`, error.message);
-        if (i === retries) {
-          console.error(`❌ Не удалось загрузить ${url} после ${retries + 1} попыток`);
+        if (i === maxRetries) {
+          console.error(`❌ Не удалось загрузить ${url} после ${maxRetries + 1} попыток`);
           return null; // Возвращаем null вместо ошибки
         }
         // Ждём перед повтором
