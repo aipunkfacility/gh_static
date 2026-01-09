@@ -62,14 +62,15 @@
         window.siteMeta = meta;
       }
       
-      const excursions = exc || []; 
-      const transportCategories = cat || [];
-      const transportItems = trans || []; 
-      const accommodations = acc || []; 
-      const services = serv || []; 
-      const offices = off || [];
+      // Применяем валидацию и фильтрацию данных
+      const excursions = filterValidActive(exc || [], validateExcursion);
+      const transportCategories = cat || []; // Категории не требуют валидации
+      const transportItems = filterValidActive(trans || [], validateTransport);
+      const accommodations = filterValidActive(acc || [], validateAccommodation);
+      const services = filterValidActive(serv || [], validateService);
+      const offices = filterValidActive(off || [], validateOffice);
       
-      console.log('📊 Загружено данных:', {
+      console.log('📊 Загружено и валидировано данных:', {
         meta: !!meta,
         excursions: excursions.length,
         categories: transportCategories.length,
