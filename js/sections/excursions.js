@@ -13,7 +13,7 @@ function ExcursionsSection(excursions) {
                 <h3 class="text-xl font-bold mb-3">${escapeHTML(excursion.title)}</h3>
                 <p class="text-gray-600 mb-2">${escapeHTML(excursion.shortDescription)}</p>
                 <p class="text-sm text-gray-500 mb-4">⏱ ${escapeHTML(excursion.duration)}</p>
-                <button onclick="openWhatsApp()" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition">
+                <button onclick="openWhatsApp('Хочу забронировать экскурсию: ${escapeHTML(excursion.title)}')" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition">
                   Забронировать
                 </button>
               </div>
