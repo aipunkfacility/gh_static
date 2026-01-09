@@ -1,12 +1,16 @@
 function renderCardService(service) {
   const message = `Хочу заказать: ${service.title}`;
+  
+  // ПРОВЕРКА: Если есть картинка, создаем блок. Если нет - пустая строка.
+  const imageHtml = service.image 
+    ? `<div class="h-48 overflow-hidden border-b border-gray-100">
+         <img src="${service.image}" alt="${escapeHTML(service.title)}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+       </div>`
+    : '';
+
   return `
     <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition overflow-hidden">
-      <!-- ДОБАВЛЕНО: Картинка с alt и lazy loading -->
-      <div class="h-48 overflow-hidden">
-        <img src="${service.image}" alt="${escapeHTML(service.title)}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
-      </div>
-      
+      ${imageHtml}
       <div class="p-6">
         <h3 class="text-xl font-bold text-gray-800 mb-3">${escapeHTML(service.title)}</h3>
         <p class="text-gray-600 mb-4">${escapeHTML(service.shortDescription)}</p>
@@ -21,16 +25,30 @@ function renderCardService(service) {
 function renderCardTransport(transport, categories) {
   const category = categories ? categories.find(c => c.id === transport.categoryId) : null;
   const message = `Хочу забронировать: ${transport.title}`;
-  return `
-    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-      <!-- ДОБАВЛЕНО: Картинка с alt и lazy loading -->
+
+  // ПРОВЕРКА КАРТИНКИ
+  // Если есть фото: показываем фото + бейдж категории поверх фото
+  let topContent = '';
+  if (transport.image) {
+      topContent = `
       <div class="h-56 overflow-hidden relative group">
         <img src="${transport.image}" alt="${escapeHTML(transport.title)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
         ${category ? `<span class="absolute top-4 right-4 px-3 py-1 text-sm font-bold rounded-full shadow-md ${getCategoryColor(category.slug)}">${escapeHTML(category.title)}</span>` : ''}
-      </div>
+      </div>`;
+  }
 
+  // ПРОВЕРКА ЗАГОЛОВКА
+  // Если фото НЕТ, бейдж категории должен быть рядом с заголовком (как в старом дизайне)
+  const headerBadge = (!transport.image && category) 
+    ? `<span class="inline-block mt-2 px-3 py-1 text-sm rounded-full ${getCategoryColor(category.slug)}">${escapeHTML(category.title)}</span>`
+    : '';
+
+  return `
+    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+      ${topContent}
       <div class="bg-gray-100 p-4 border-b">
         <h3 class="text-lg font-bold">${escapeHTML(transport.title)}</h3>
+        ${headerBadge}
       </div>
       <div class="p-6">
         <p class="text-gray-600 mb-4">${escapeHTML(transport.useCases)}</p>
@@ -56,17 +74,28 @@ function renderCardTransport(transport, categories) {
 
 function renderCardAccommodation(acc) {
   const message = `Хочу узнать цены на: ${acc.title}`;
+
+  // ПРОВЕРКА КАРТИНКИ
+  const imageHtml = acc.image 
+    ? `<div class="h-64 overflow-hidden relative">
+         <img src="${acc.image}" alt="${escapeHTML(acc.title)}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy">
+         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 pt-12">
+            <h3 class="text-white text-2xl font-bold drop-shadow-md">${escapeHTML(acc.title)}</h3>
+         </div>
+       </div>`
+    : ''; 
+  
+  // Если картинки нет, заголовок нужно показать в теле карточки черным цветом
+  const titleHtml = !acc.image 
+    ? `<h3 class="text-2xl font-bold mb-4 text-gray-800">${escapeHTML(acc.title)}</h3>` 
+    : '';
+
   return `
     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
-      <!-- ДОБАВЛЕНО: Большая картинка с alt -->
-      <div class="h-64 overflow-hidden relative">
-        <img src="${acc.image}" alt="${escapeHTML(acc.title)}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy">
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 pt-12">
-            <h3 class="text-white text-2xl font-bold drop-shadow-md">${escapeHTML(acc.title)}</h3>
-        </div>
-      </div>
+      ${imageHtml}
 
       <div class="p-8">
+        ${titleHtml}
         <p class="text-gray-600 mb-6 italic border-l-4 border-purple-500 pl-4">${escapeHTML(acc.slogan)}</p>
         
         <div class="mb-4">
@@ -101,11 +130,7 @@ function renderCardAccommodation(acc) {
 }
 
 function renderCardOffice(office) {
-  // Для офиса часто нет картинки в JSON, но если есть - раскомментируйте код ниже
-  /* 
-  const imageHtml = office.image ? `<img src="${office.image}" alt="${escapeHTML(office.title)}" class="w-full h-48 object-cover mb-4 rounded-lg" loading="lazy">` : ''; 
-  */
-  
+  // Для офиса картинки обычно нет, оставляем как было
   return `
     <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-blue-500">
       <h3 class="text-xl font-bold mb-3">${escapeHTML(office.title)}</h3>
