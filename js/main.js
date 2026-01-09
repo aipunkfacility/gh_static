@@ -1,4 +1,7 @@
 (function() {
+  // Глобальная переменная для хранения метаданных сайта
+  window.siteMeta = { whatsappNumber: '84372733431' }; // fallback значение
+  
   // Функция загрузки одного файла с retry
   async function fetchWithRetry(url, retries = 2) {
     for (let i = 0; i <= retries; i++) {
@@ -51,8 +54,11 @@
         fetchWithRetry(endpoints.OFFICES)
       ]);
       
-      // Локальные переменные внутри функции
-      const siteMeta = meta || {}; 
+      // Сохраняем siteMeta в глобальную переменную
+      if (meta) {
+        window.siteMeta = meta;
+      }
+      
       const excursions = exc || []; 
       const transportCategories = cat || [];
       const transportItems = trans || []; 
@@ -72,13 +78,13 @@
       
       // Рендер
       appElement.innerHTML = `
-        ${HeroSection(siteMeta)}
+        ${HeroSection(window.siteMeta)}
         ${PopularSection(excursions, services, transportItems, transportCategories)}
         ${ExcursionsSection(excursions)}
         ${TransportSection(transportCategories, transportItems)}
         ${AccommodationSection(accommodations)}
         ${ServicesSection(services)}
-        ${ContactsSection(offices, siteMeta)}
+        ${ContactsSection(offices, window.siteMeta)}
       `;
 
       console.log('✅ Сайт загружен успешно');
