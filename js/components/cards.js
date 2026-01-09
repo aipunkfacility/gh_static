@@ -3,7 +3,7 @@ function renderCardService(service) {
     <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
       <h3 class="text-xl font-bold text-gray-800 mb-3">${escapeHTML(service.title)}</h3>
       <p class="text-gray-600 mb-4">${escapeHTML(service.shortDescription)}</p>
-      <button onclick="openWhatsApp()" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition">
+      <button onclick="openWhatsApp('Хочу заказать: ${escapeHTML(service.title)}')" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition">
         Заказать
       </button>
     </div>
@@ -32,7 +32,7 @@ function renderCardTransport(transport, categories) {
             ${transport.specs.map(s => `<li>${escapeHTML(s)}</li>`).join('')}
           </ul>
         </div>
-        <button onclick="openWhatsApp()" class="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-green-600 transition">
+        <button onclick="openWhatsApp('Хочу забронировать: ${escapeHTML(transport.title)}')" class="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-green-600 transition">
           Забронировать
         </button>
       </div>
@@ -69,7 +69,7 @@ function renderCardAccommodation(acc) {
         <p class="text-gray-800 font-medium mt-1">${escapeHTML(acc.address)}</p>
       </div>
       
-      <button onclick="openWhatsApp()" class="w-full bg-purple-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-purple-600 transition">
+      <button onclick="openWhatsApp('Хочу узнать цены на: ${escapeHTML(acc.title)}')" class="w-full bg-purple-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-purple-600 transition">
         Узнать цены
       </button>
     </div>
@@ -89,7 +89,7 @@ function renderCardOffice(office) {
         <p class="font-semibold">⏰ Время работы:</p>
         <p class="text-gray-600">${escapeHTML(office.workTime)}</p>
       </div>
-      <button onclick="openWhatsApp()" class="w-full bg-blue-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-blue-600 transition">
+      <button onclick="openWhatsApp('Здравствуйте! У меня вопрос')" class="w-full bg-blue-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-blue-600 transition">
         Написать в WhatsApp
       </button>
     </div>
@@ -107,6 +107,8 @@ function getCategoryColor(slug) {
   return colors[slug] || 'bg-gray-100 text-gray-800';
 }
 
-function openWhatsApp() {
-  window.open('https://wa.me/84372733431', '_blank');
+function openWhatsApp(message = 'Здравствуйте! У меня вопрос') {
+  const phoneNumber = siteMeta.whatsappNumber || '84372733431';
+  const encodedMessage = encodeURIComponent(message);
+  window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
 }
