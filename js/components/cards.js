@@ -109,9 +109,3 @@ function getCategoryColor(slug) {
   };
   return colors[slug] || 'bg-gray-100 text-gray-800';
 }
-
-function openWhatsApp(message = 'Здравствуйте! У меня вопрос') {
-  const phoneNumber = siteMeta.whatsappNumber || '84372733431';
-  const encodedMessage = encodeURIComponent(message);
-  window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
-}
