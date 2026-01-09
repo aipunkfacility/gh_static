@@ -8,7 +8,7 @@ function ContactsSection(offices, siteMeta) {
         </div>
         <div class="bg-blue-50 rounded-lg p-8 text-center">
           <h3 class="text-2xl font-bold mb-4">💬 Остались вопросы?</h3>
-          <p class="text-gray-600 mb-6">${siteMeta.responseTimeText}</p>
+          <p class="text-gray-600 mb-6">${escapeHTML(siteMeta.responseTimeText)}</p>
           <button onclick="openWhatsApp()" class="bg-green-500 text-white px-8 py-4 rounded-lg font-bold hover:bg-green-600">
             <i class="fab fa-whatsapp mr-2"></i>Написать в WhatsApp
           </button>
