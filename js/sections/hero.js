@@ -1,6 +1,6 @@
 function HeroSection(siteMeta) {
   return `
-    <section id="hero" class="relative text-white py-20 px-4 text-center min-h-[600px] flex items-center justify-center overflow-hidden">
+    <section id="hero" class="relative text-white py-20 px-4 text-center min-h-screen flex items-center justify-center overflow-hidden">
       
       <!-- ФОН: Картинки из папки images -->
       <div class="absolute inset-0 z-0">
