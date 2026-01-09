@@ -1,12 +1,12 @@
 function HeroSection(siteMeta) {
   return `
     <!-- 
-      1. flex-col: элементы встают в колонку
-      2. justify-between: раскидывает элементы по краям (верх/низ)
-      3. items-center: центрирует по горизонтали
-      4. py-16: отступы сверху и снизу, чтобы текст не прилип к самому краю экрана
+      ИСПРАВЛЕНИЯ:
+      1. pt-32 (padding-top): Большой отступ сверху (примерно 128px), чтобы опустить текст.
+      2. pb-8 (padding-bottom): Небольшой отступ снизу для кнопок.
+      3. px-4: Вернул стандартные боковые отступы (px-40 ломает вид на мобильных).
     -->
-    <section id="hero" class="relative text-white py-6 px-40 text-center flex flex-col justify-between items-center overflow-hidden" style="min-height: 60vh;">
+    <section id="hero" class="relative text-white pt-32 pb-8 px-4 text-center flex flex-col justify-between items-center overflow-hidden" style="min-height: 60vh;">
       
       <!-- ФОН -->
       <div class="absolute inset-0 z-0">
@@ -17,16 +17,15 @@ function HeroSection(siteMeta) {
         <div class="absolute inset-0 bg-black/50"></div>
       </div>
 
-      <!-- ВЕРХНИЙ БЛОК: Заголовок и текст -->
-      <!-- mt-10 добавил, чтобы не наезжало на шапку сайта (хедер) -->
-      <div class="relative z-10 max-w-4xl mx-auto mt-10">
+      <!-- ВЕРХНИЙ БЛОК: Текст -->
+      <!-- Убрал margin-top (mt-10), так как теперь работает общий padding секции (pt-32) -->
+      <div class="relative z-10 max-w-4xl mx-auto">
         <h1 class="text-4xl md:text-6xl font-bold mb-4">${escapeHTML(siteMeta.mainTitle)}</h1>
         <p class="text-xl md:text-2xl">${escapeHTML(siteMeta.mainSubtitle)}</p>
       </div>
 
       <!-- НИЖНИЙ БЛОК: Кнопки -->
-      <!-- mb-4 небольшой отступ от самого низа -->
-      <div class="relative z-10 w-full flex flex-col sm:flex-row gap-4 justify-center mb-4">
+      <div class="relative z-10 w-full flex flex-col sm:flex-row gap-4 justify-center">
         <button onclick="smoothScroll('excursions')" 
                 class="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition">
           Выбрать экскурсию
@@ -39,6 +38,3 @@ function HeroSection(siteMeta) {
     </section>
   `;
 }
-
-
-
