@@ -10,8 +10,8 @@ function renderCardService(service) {
   `;
 }
 
-function renderCardTransport(transport) {
-  const category = transportCategories.find(c => c.id === transport.categoryId);
+function renderCardTransport(transport, categories) {
+  const category = categories ? categories.find(c => c.id === transport.categoryId) : null;
   return `
     <div class="bg-white rounded-lg shadow-md overflow-hidden">
       <div class="bg-gray-100 p-4 border-b">
@@ -108,5 +108,5 @@ function getCategoryColor(slug) {
 }
 
 function openWhatsApp() {
-  alert('Открывается WhatsApp (+84-xxx-xxx-xxxx)...');
+  window.open('https://wa.me/84372733431', '_blank');
 }
