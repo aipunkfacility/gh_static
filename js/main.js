@@ -32,7 +32,7 @@ async function loadData() {
     // Собираем всю страницу из секций
     appElement.innerHTML = `
       ${HeroSection(siteMeta)}
-      ${PopularSection(excursions, services, transportItems)}
+      ${PopularSection(excursions, services, transportItems, transportCategories)}
       ${ExcursionsSection(excursions)}
       ${TransportSection(transportCategories, transportItems)}
       ${AccommodationSection(accommodations)}
