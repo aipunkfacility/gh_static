@@ -1,9 +1,10 @@
 function renderCardService(service) {
+  const message = `Хочу заказать: ${service.title}`;
   return `
     <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
       <h3 class="text-xl font-bold text-gray-800 mb-3">${escapeHTML(service.title)}</h3>
       <p class="text-gray-600 mb-4">${escapeHTML(service.shortDescription)}</p>
-      <button onclick="openWhatsApp('Хочу заказать: ${escapeHTML(service.title)}')" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition">
+      <button onclick='openWhatsApp("${escapeHTML(message).replace(/"/g, '&quot;')}")' class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition">
         Заказать
       </button>
     </div>
@@ -12,6 +13,7 @@ function renderCardService(service) {
 
 function renderCardTransport(transport, categories) {
   const category = categories ? categories.find(c => c.id === transport.categoryId) : null;
+  const message = `Хочу забронировать: ${transport.title}`;
   return `
     <div class="bg-white rounded-lg shadow-md overflow-hidden">
       <div class="bg-gray-100 p-4 border-b">
@@ -32,7 +34,7 @@ function renderCardTransport(transport, categories) {
             ${transport.specs.map(s => `<li>${escapeHTML(s)}</li>`).join('')}
           </ul>
         </div>
-        <button onclick="openWhatsApp('Хочу забронировать: ${escapeHTML(transport.title)}')" class="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-green-600 transition">
+        <button onclick='openWhatsApp("${escapeHTML(message).replace(/"/g, '&quot;')}")' class="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-green-600 transition">
           Забронировать
         </button>
       </div>
@@ -41,6 +43,7 @@ function renderCardTransport(transport, categories) {
 }
 
 function renderCardAccommodation(acc) {
+  const message = `Хочу узнать цены на: ${acc.title}`;
   return `
     <div class="bg-white rounded-lg shadow-md p-8">
       <h3 class="text-2xl font-bold mb-4">${escapeHTML(acc.title)}</h3>
@@ -69,7 +72,7 @@ function renderCardAccommodation(acc) {
         <p class="text-gray-800 font-medium mt-1">${escapeHTML(acc.address)}</p>
       </div>
       
-      <button onclick="openWhatsApp('Хочу узнать цены на: ${escapeHTML(acc.title)}')" class="w-full bg-purple-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-purple-600 transition">
+      <button onclick='openWhatsApp("${escapeHTML(message).replace(/"/g, '&quot;')}")' class="w-full bg-purple-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-purple-600 transition">
         Узнать цены
       </button>
     </div>
@@ -89,7 +92,7 @@ function renderCardOffice(office) {
         <p class="font-semibold">⏰ Время работы:</p>
         <p class="text-gray-600">${escapeHTML(office.workTime)}</p>
       </div>
-      <button onclick="openWhatsApp('Здравствуйте! У меня вопрос')" class="w-full bg-blue-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-blue-600 transition">
+      <button onclick='openWhatsApp("Здравствуйте! У меня вопрос")' class="w-full bg-blue-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-blue-600 transition">
         Написать в WhatsApp
       </button>
     </div>
