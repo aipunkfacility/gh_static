@@ -79,15 +79,18 @@ function openWhatsApp(message) {
 
 // Функция для переключения мобильного меню
 function toggleMobileMenu() {
-  const menuButton = document.querySelector('.js-header-menu-toggle');
-  const backdrop = document.querySelector('.HeaderMktg-backdrop');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamburger = document.getElementById('mobile-menu-toggle');
   
-  if (menuButton && backdrop) {
-    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-    menuButton.setAttribute('aria-expanded', !isExpanded);
+  if (mobileMenu && hamburger) {
+    // Переключаем класс active на меню
+    mobileMenu.classList.toggle('active');
+    
+    // Переключаем класс active на гамбургере (для анимации)
+    hamburger.classList.toggle('active');
     
     // Предотвращаем скролл body когда меню открыто
-    if (!isExpanded) {
+    if (mobileMenu.classList.contains('active')) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
