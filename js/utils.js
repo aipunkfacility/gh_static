@@ -49,3 +49,11 @@ function validateOffice(office) {
 function filterValidActive(items, validator) {
   return items.filter(item => validator(item));
 }
+
+// Кросс-браузерный плавный скролл
+function smoothScroll(elementId) {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
