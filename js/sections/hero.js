@@ -1,12 +1,14 @@
 function HeroSection(siteMeta) {
   return `
     <!-- 
-      ИСПРАВЛЕНИЯ:
-      1. pt-32 (padding-top): Большой отступ сверху (примерно 128px), чтобы опустить текст.
-      2. pb-8 (padding-bottom): Небольшой отступ снизу для кнопок.
-      3. px-4: Вернул стандартные боковые отступы (px-40 ломает вид на мобильных).
+      РЕШЕНИЕ ДЛЯ АДАПТИВА:
+      1. padding-top: 20vh — отступ сверху равен 20% высоты экрана (на мобиле меньше, на ПК больше).
+      2. padding-bottom: 5vh — отступ снизу 5% высоты экрана.
+      3. min-height: 75vh — секция занимает 75% экрана, открывая панораму.
     -->
-    <section id="hero" class="relative text-white pt-32 pb-8 px-4 text-center flex flex-col justify-between items-center overflow-hidden" style="min-height: 60vh;">
+    <section id="hero" 
+             class="relative text-white px-4 text-center flex flex-col justify-between items-center overflow-hidden" 
+             style="min-height: 75vh; padding-top: 20vh; padding-bottom: 5vh;">
       
       <!-- ФОН -->
       <div class="absolute inset-0 z-0">
@@ -18,7 +20,6 @@ function HeroSection(siteMeta) {
       </div>
 
       <!-- ВЕРХНИЙ БЛОК: Текст -->
-      <!-- Убрал margin-top (mt-10), так как теперь работает общий padding секции (pt-32) -->
       <div class="relative z-10 max-w-4xl mx-auto">
         <h1 class="text-4xl md:text-6xl font-bold mb-4">${escapeHTML(siteMeta.mainTitle)}</h1>
         <p class="text-xl md:text-2xl">${escapeHTML(siteMeta.mainSubtitle)}</p>
