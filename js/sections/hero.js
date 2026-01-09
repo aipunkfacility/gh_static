@@ -1,6 +1,7 @@
 function HeroSection(siteMeta) {
   return `
-    <section id="hero" class="relative text-white py-20 px-4 text-center min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Изменили min-h-screen на style="min-height: 80vh" для регулировки высоты -->
+    <section id="hero" class="relative text-white py-20 px-4 text-center flex items-center justify-center overflow-hidden" style="min-height: 80vh;">
       
       <!-- ФОН: Картинки из папки images -->
       <div class="absolute inset-0 z-0">
