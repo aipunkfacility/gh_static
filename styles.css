@@ -322,21 +322,18 @@ body {
   .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-/* HERO SECTION - ФИНАЛЬНАЯ ВЕРСИЯ */
+/* HERO SECTION - ИСПРАВЛЕННАЯ ВЕРСИЯ */
 .hero-section {
   position: relative;
   color: #fff;
   text-align: center;
   overflow: hidden;
   
-  /* 1. Гарантируем высоту на весь экран */
+  /* 100vh = 100% от высоты экрана */
   min-height: 100vh;
   
-  /* 2. Используем флекс, чтобы растянуть контент на всю высоту */
   display: flex;
   flex-direction: column;
-  
-  /* 3. Убираем паддинги у секции, переносим их внутрь контента */
   padding: 0; 
 }
 
@@ -355,7 +352,11 @@ body {
 
 .hero-bg img {
   object-fit: cover;
-  object-position: center bottom;
+  /* ГЛАВНОЕ ИСПРАВЛЕНИЕ:
+     30% от верха. Это "золотая середина".
+     Мы фокусируемся на верхней трети картинки (небо).
+     Джип (который в центре/внизу картинки) автоматически сдвинется ниже. */
+  object-position: center 30%;
 }
 
 .hero-overlay {
@@ -372,17 +373,16 @@ body {
   margin: 0 auto;
   width: 100%;
   
-  /* 4. Растягиваем контейнер контента на всю высоту секции */
   flex: 1; 
   display: flex;
   flex-direction: column;
   
-  /* 5. ГЛАВНОЕ: Разносим контент по краям (верх/низ) */
+  /* Разносим текст и кнопки вверх-вниз */
   justify-content: space-between;
   
-  /* 6. Отступы, чтобы текст не лез под хедер, а кнопки не прилипали к низу */
-  padding-top: 130px; /* Отступ сверху для текста */
-  padding-bottom: 80px; /* Отступ снизу для кнопок */
+  /* Отступы */
+  padding-top: 130px; 
+  padding-bottom: 60px; /* Кнопки будут чуть ниже */
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -405,14 +405,5 @@ body {
 @media (min-width: 640px) {
   .hero-buttons {
     flex-direction: row;
-  }
-}
-
-/* ДЕСКТОП ВЕРСИЯ */
-@media (min-width: 1024px) {
-  
-  /* Центрируем картинку, чтобы джип был по центру между текстом и кнопками */
-  .hero-bg img {
-    object-position: center center;
   }
 }
