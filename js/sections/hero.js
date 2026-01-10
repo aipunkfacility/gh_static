@@ -1,6 +1,6 @@
 function HeroSection(siteMeta) {
   return `
-    <section id="hero" class="relative text-white px-4 text-center overflow-hidden" style="height: 100vh; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding-top: 6rem; padding-bottom: 6rem;">
+    <section id="hero" class="relative text-white px-4 text-center overflow-hidden" style="height: 100vh; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding-top: 6rem; padding-bottom: 4rem;">
       
       <!-- Фоновое изображение -->
       <div class="absolute inset-0 z-0" style="top: 0;">
@@ -31,3 +31,4 @@ function HeroSection(siteMeta) {
     </section>
   `;
 }
+
