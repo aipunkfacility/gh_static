@@ -13,8 +13,8 @@ function renderCardService(service) {
       <div class="p-6 flex flex-col flex-grow">
         <h3 class="text-xl font-bold text-gray-800 mb-3">${escapeHTML(service.title)}</h3>
         <p class="text-gray-600 mb-4 flex-grow">${escapeHTML(service.shortDescription)}</p>
-        <button onclick='openWhatsApp("${escapeHTML(message).replace(/"/g, '&quot;')}")' class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition mt-auto">
-          Заказать
+        <button onclick='openWhatsApp("${escapeHTML(message).replace(/"/g, '&quot;')}")' class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition mt-auto flex items-center justify-center">
+          <i class="ri-whatsapp-line mr-2 text-xl"></i>Заказать
         </button>
       </div>
     </div>
@@ -59,8 +59,8 @@ function renderCardTransport(transport, categories) {
             ${transport.specs.map(s => `<li>${escapeHTML(s)}</li>`).join('')}
           </ul>
         </div>
-        <button onclick='openWhatsApp("${escapeHTML(message).replace(/"/g, '&quot;')}")' class="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-green-600 transition mt-auto">
-          Забронировать
+        <button onclick='openWhatsApp("${escapeHTML(message).replace(/"/g, '&quot;')}")' class="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-green-600 transition mt-auto flex items-center justify-center">
+          <i class="ri-motorbike-fill mr-2 text-xl"></i>Забронировать
         </button>
       </div>
     </div>
@@ -92,31 +92,38 @@ function renderCardAccommodation(acc) {
         <p class="text-gray-600 mb-6 italic border-l-4 border-purple-500 pl-4">${escapeHTML(acc.slogan)}</p>
         
         <div class="mb-4">
-          <h4 class="font-semibold mb-2">🏡 Территория:</h4>
+          <h4 class="font-semibold mb-2 flex items-center">
+            <i class="ri-home-smile-line text-green-600 mr-2 text-xl"></i>Территория:
+          </h4>
           <p class="text-gray-600">${escapeHTML(acc.territoryDescription)}</p>
         </div>
         
         <div class="mb-4 flex-grow">
-          <h4 class="font-semibold mb-2">🛏 В номерах:</h4>
-          <ul class="list-disc list-inside text-gray-600">
+          <h4 class="font-semibold mb-2 flex items-center">
+            <i class="ri-hotel-bed-line text-blue-500 mr-2 text-xl"></i>В номерах:
+          </h4>
+          <ul class="list-disc list-inside text-gray-600 ml-1">
             ${acc.roomFeatures.map(f => `<li>${escapeHTML(f)}</li>`).join('')}
           </ul>
         </div>
         
         <div class="mb-4">
-          <h4 class="font-semibold mb-2">🍹 Атмосфера:</h4>
+          <h4 class="font-semibold mb-2 flex items-center">
+            <i class="ri-cup-line text-orange-500 mr-2 text-xl"></i>Атмосфера:
+          </h4>
           <p class="text-gray-600">${escapeHTML(acc.atmosphere)}</p>
         </div>
         
         <div class="mb-6">
-          <h4 class="font-semibold mb-2">📍 Локация:</h4>
+          <h4 class="font-semibold mb-2 flex items-center">
+            <i class="ri-map-pin-line text-red-500 mr-2 text-xl"></i>Локация:
+          </h4>
           <p class="text-gray-600">${escapeHTML(acc.locationDescription)}</p>
-          <!-- ИСПРАВЛЕНО: иконка локации -->
-          <p class="text-gray-800 font-medium mt-1"><i class="ri-map-pin-fill text-red-500 mr-2 align-bottom"></i>${escapeHTML(acc.address)}</p>
+          <p class="text-gray-800 font-medium mt-1 ml-7">${escapeHTML(acc.address)}</p>
         </div>
         
-        <button onclick='openWhatsApp("${escapeHTML(message).replace(/"/g, '&quot;')}")' class="w-full bg-purple-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-purple-600 transition mt-auto">
-          Узнать цены
+        <button onclick='openWhatsApp("${escapeHTML(message).replace(/"/g, '&quot;')}")' class="w-full bg-purple-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-purple-600 transition mt-auto flex items-center justify-center">
+          <i class="ri-price-tag-3-line mr-2 align-bottom"></i>Узнать цены
         </button>
       </div>
     </div>
@@ -136,8 +143,8 @@ function renderCardOffice(office) {
         <p class="font-semibold">⏰ Время работы:</p>
         <p class="text-gray-600">${escapeHTML(office.workTime)}</p>
       </div>
-      <button onclick='openWhatsApp("Здравствуйте! У меня вопрос по офису ${escapeHTML(office.title)}")' class="w-full bg-blue-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-blue-600 transition mt-auto">
-        Написать в WhatsApp
+      <button onclick='openWhatsApp("Здравствуйте! У меня вопрос по офису ${escapeHTML(office.title)}")' class="w-full bg-blue-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-blue-600 transition mt-auto flex items-center justify-center">
+        <i class="ri-whatsapp-line mr-2"></i>Написать в WhatsApp
       </button>
     </div>
   `;
