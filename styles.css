@@ -350,13 +350,15 @@ body {
 
 .hero-bg img {
   object-fit: cover;
-  object-position: center;
+  /* ВАЖНО: Прижимаем картинку к низу, чтобы джип не обрезался */
+  object-position: center bottom;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  /* ВАЖНО: Градиент для лучшей читаемости белого текста */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.6) 100%);
 }
 
 /* Контент внутри hero */
