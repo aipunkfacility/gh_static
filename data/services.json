@@ -5,6 +5,7 @@
     "slug": "visa-run-cambodia",
     "shortDescription": "Подходит срок визы? Организуем продление одним днем. Выезд 02:30, возвращение 16:00-17:00. Стоимость: 4 200 000 VND (всё включено).",
     "type": "visa",
+    "image": "./images/600.jpg",
     "isPopular": true,
     "isActive": true
   },
@@ -14,6 +15,7 @@
     "slug": "transfer-airport-muine",
     "shortDescription": "Забудьте про тесные автобусы. Toyota Fortuner (7 мест), кондиционер, багажник. Едем по новой скоростной трассе.",
     "type": "transfer",
+    "image": "./images/600.jpg",
     "isPopular": true,
     "isActive": true
   },
@@ -23,8 +25,8 @@
     "slug": "money-exchange",
     "shortDescription": "Закончились наличные? Поможем оперативно и по честному курсу. Принимаем рубли безнал, валюту, криптовалюты.",
     "type": "exchange",
+    "image": "./images/600.jpg",
     "isPopular": false,
     "isActive": true
   }
 ]
-
