@@ -29,7 +29,7 @@ function HeroSection(siteMeta) {
             onclick="smoothScroll('excursions')"
             class="bg-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-orange-600 hover:scale-105 transition flex items-center justify-center gap-3"
           >
-            <i class="ph ph-map-trifold text-2xl"></i>
+            <i class="ri-map-2-line text-2xl"></i>
             Выбрать экскурсию
           </button>
 
@@ -38,7 +38,7 @@ function HeroSection(siteMeta) {
             onclick="smoothScroll('transport')"
             class="bg-white text-gray-800 px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-gray-100 hover:scale-105 transition flex items-center justify-center gap-3"
           >
-            <i class="ph ph-moped text-orange-500 text-2xl"></i>
+            <i class="ri-motorbike-line text-orange-500 text-2xl"></i>
             Арендовать байк
           </button>
         </div>
