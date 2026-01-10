@@ -6,6 +6,7 @@
     "shortDescription": "Белые и Красные дюны, Ручей Фей, рыбацкая деревня. Индивидуальный тур по пустыне.",
     "priceFrom": "$35",
     "duration": "4.5 часа",
+    "image": "./images/533.jpg",
     "isPopular": true,
     "isActive": true
   },
@@ -16,6 +17,7 @@
     "shortDescription": "Отличная альтернатива пляжному отдыху — поездка на озеро в 40 минутах от Муйне. Пиранья, Сом, Змееголов.",
     "priceFrom": "По запросу",
     "duration": "08:00-14:00",
+    "image": "./images/533.jpg",
     "isPopular": false,
     "isActive": true
   },
@@ -26,6 +28,7 @@
     "shortDescription": "Изумрудная долина, самый высокий водопад юга Дамбри. Горный Вьетнам без толп туристов.",
     "priceFrom": "$80",
     "duration": "Весь день",
+    "image": "./images/533.jpg",
     "isPopular": false,
     "isActive": true
   },
@@ -36,6 +39,7 @@
     "shortDescription": "Французская архитектура, прохлада гор и Crazy House. Маленькая Франция в горах.",
     "priceFrom": "$45",
     "duration": "05:00-19:00",
+    "image": "./images/533.jpg",
     "isPopular": false,
     "isActive": true
   },
@@ -46,6 +50,7 @@
     "shortDescription": "Канатная дорога через джунгли к статуе Будды (49м). Паломничество к самой большой статуе.",
     "priceFrom": "$30",
     "duration": "4-5 часов",
+    "image": "./images/533.jpg",
     "isPopular": false,
     "isActive": true
   },
@@ -56,6 +61,7 @@
     "shortDescription": "Мегаполис, Военный музей, Нотр-Дам, рынок Бен Тхань. Колониальный центр и ритм большого города.",
     "priceFrom": "$60",
     "duration": "05:00-18:00",
+    "image": "./images/533.jpg",
     "isPopular": false,
     "isActive": true
   },
@@ -66,6 +72,7 @@
     "shortDescription": "Партизанские туннели, стрельбище, история войны. Спуск в реальные подземные ходы партизан.",
     "priceFrom": "По запросу",
     "duration": "Полдня",
+    "image": "./images/533.jpg",
     "isPopular": false,
     "isActive": true
   },
@@ -76,6 +83,7 @@
     "shortDescription": "Путешествие по дельте реки, джунгли, лодки. Аутентичный юг с катанием на джонках.",
     "priceFrom": "$60",
     "duration": "05:00-19:00",
+    "image": "./images/533.jpg",
     "isPopular": false,
     "isActive": true
   },
@@ -86,6 +94,7 @@
     "shortDescription": "Остров развлечений: аквапарк, аттракционы, зоопарк. Огромный парк с канатной дорогой.",
     "priceFrom": "По запросу",
     "duration": "Весь день",
+    "image": "./images/533.jpg",
     "isPopular": false,
     "isActive": true
   },
@@ -96,6 +105,7 @@
     "shortDescription": "Остров Обезьян и Остров Орхидей с пляжем. Морская прогулка с контактным зоопарком.",
     "priceFrom": "$55",
     "duration": "05:00-19:00",
+    "image": "./images/533.jpg",
     "isPopular": false,
     "isActive": true
   },
@@ -106,8 +116,8 @@
     "shortDescription": "Снорклинг на коралловом рифе, дикие пляжи. Одна из красивейших бухт Вьетнама.",
     "priceFrom": "$60",
     "duration": "Весь день",
+    "image": "./images/533.jpg",
     "isPopular": false,
     "isActive": true
   }
 ]
-
