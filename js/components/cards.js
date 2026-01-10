@@ -111,7 +111,8 @@ function renderCardAccommodation(acc) {
         <div class="mb-6">
           <h4 class="font-semibold mb-2">📍 Локация:</h4>
           <p class="text-gray-600">${escapeHTML(acc.locationDescription)}</p>
-          <p class="text-gray-800 font-medium mt-1"><i class="fas fa-map-marker-alt text-red-500 mr-2"></i>${escapeHTML(acc.address)}</p>
+          <!-- ИСПРАВЛЕНО: иконка локации -->
+          <p class="text-gray-800 font-medium mt-1"><i class="ri-map-pin-fill text-red-500 mr-2 align-bottom"></i>${escapeHTML(acc.address)}</p>
         </div>
         
         <button onclick='openWhatsApp("${escapeHTML(message).replace(/"/g, '&quot;')}")' class="w-full bg-purple-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-purple-600 transition mt-auto">
