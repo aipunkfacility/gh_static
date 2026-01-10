@@ -1,9 +1,9 @@
 function HeroSection(siteMeta) {
   return `
-    <section id="hero" class="relative text-white px-4 text-center overflow-hidden" style="height: 100vh; margin-top: 0; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding-top: 8rem; padding-bottom: 4rem;">
+    <section id="hero" class="relative text-white px-4 text-center overflow-hidden" style="height: 100vh; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding-top: 6rem; padding-bottom: 4rem;">
       
       <!-- Фоновое изображение -->
-      <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 z-0" style="top: 0;">
         <picture>
           <source media="(min-width: 768px)" srcset="./images/hero-desktop.jpg">
           <img src="./images/hero-mobile.jpg" alt="${escapeHTML(siteMeta.mainTitle)}" class="w-full h-full object-cover">
