@@ -408,3 +408,12 @@ body {
     flex-direction: row;
   }
 }
+
+/* ВАЖНО: Добавьте это в конец styles.css для высоты карточек */
+.h-48 { height: 12rem; } /* ~192px */
+.h-56 { height: 14rem; } /* ~224px */
+.h-64 { height: 16rem; } /* ~256px */
+.object-cover {
+  object-fit: cover;
+  object-position: center;
+}
