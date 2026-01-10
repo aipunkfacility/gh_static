@@ -4,7 +4,7 @@ function HeroSection(siteMeta) {
       
       <div class="hero-bg">
         <picture>
-          <source media="(min-width: 768px)" srcset="./images/hero-desktop.jpg">
+          <source media="(min-width: 1024px)" srcset="./images/hero-desktop.jpg">
           <img 
             src="./images/hero-mobile.jpg" 
             alt="${escapeHTML(siteMeta.mainTitle)}"
@@ -47,3 +47,4 @@ function HeroSection(siteMeta) {
     </section>
   `;
 }
+
