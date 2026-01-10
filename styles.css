@@ -417,3 +417,8 @@ body {
   object-fit: cover;
   object-position: center;
 }
+
+/* Выравнивание карточек */
+.flex-grow { flex-grow: 1; }
+.mt-auto { margin-top: auto; }
+.h-full { height: 100%; }
