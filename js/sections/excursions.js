@@ -7,24 +7,23 @@ function ExcursionsSection(excursions) {
           ${excursions.filter(e => e.isActive).map(excursion => {
             const message = `Хочу забронировать экскурсию: ${excursion.title}`;
             
-            // ИСПРАВЛЕНИЕ: Добавляем блок с картинкой
             const imageHtml = excursion.image 
-              ? `<div class="h-56 overflow-hidden group">
+              ? `<div class="h-56 overflow-hidden group flex-shrink-0">
                    <img src="${excursion.image}" alt="${escapeHTML(excursion.title)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                  </div>`
               : '';
 
             return `
-              <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+              <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col h-full">
                 ${imageHtml}
-                <div class="bg-primary text-white px-4 py-2 text-center font-bold">
+                <div class="bg-primary text-white px-4 py-2 text-center font-bold flex-shrink-0">
                   ${escapeHTML(excursion.priceFrom)}
                 </div>
-                <div class="p-6">
+                <div class="p-6 flex flex-col flex-grow">
                   <h3 class="text-xl font-bold mb-3">${escapeHTML(excursion.title)}</h3>
-                  <p class="text-gray-600 mb-2">${escapeHTML(excursion.shortDescription)}</p>
-                  <p class="text-sm text-gray-500 mb-4">⏱ ${escapeHTML(excursion.duration)}</p>
-                  <button onclick='openWhatsApp("${escapeHTML(message).replace(/"/g, '&quot;')}")' class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition">
+                  <p class="text-gray-600 mb-2 flex-grow">${escapeHTML(excursion.shortDescription)}</p>
+                  <p class="text-sm text-gray-500 mb-4 mt-2">⏱ ${escapeHTML(excursion.duration)}</p>
+                  <button onclick='openWhatsApp("${escapeHTML(message).replace(/"/g, '&quot;')}")' class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition mt-auto">
                     Забронировать
                   </button>
                 </div>
