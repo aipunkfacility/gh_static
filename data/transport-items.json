@@ -7,7 +7,7 @@
     "useCases": "Идеален для новичков и поездок на пляж. Легкий и компактный.",
     "benefits": ["Легкий в управлении", "Компактный", "Экономичный"],
     "specs": ["110cc", "Низкий расход", "Место для шлема"],
-    "image": "./images/533.jpg",
+    "image": "./images/vision.webp",
     "isPopular": false,
     "isActive": true
   },
@@ -96,4 +96,5 @@
     "isActive": true
   }
 ]
+
 
