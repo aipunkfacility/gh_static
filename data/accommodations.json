@@ -16,7 +16,7 @@
     "atmosphere": "Наш большой бассейн с баром — центр жизни резорта. Днем здесь можно расслабиться с прохладным коктейлем, а по вечерам это место становится точкой сбора для гостей и друзей отеля.",
     "locationDescription": "Адрес: 121 Nguyễn Đình Chiểу. Море через дорогу. Вы находитесь в центре событий, но на своей закрытой зеленой территории.",
     "address": "121 Nguyễn Đình Chiểu, Ham Tien",
-    "image": "./images/600.jpg",
+    "image": "./images/og-preview.jpg",
     "isPopular": true,
     "isActive": true
   },
@@ -37,7 +37,7 @@
     "atmosphere": "Спокойная и тихая атмосфера, идеальная для зимовки или отпуска.",
     "locationDescription": "Центр Муйне, 5 минут до моря. Рядом магазины и кафе.",
     "address": "5 минут от моря, центр Муйне",
-    "image": "./images/600.jpg",
+    "image": "./images/og-preview.jpg",
     "isPopular": false,
     "isActive": true
   }
