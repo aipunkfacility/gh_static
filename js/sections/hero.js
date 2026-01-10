@@ -12,7 +12,7 @@ function HeroSection(siteMeta) {
       </div>
       
       <!-- Контент-обёртка -->
-      <div style="position: relative; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding-top: 8rem; padding-bottom: 4rem;">
+      <div style="position: relative; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding-top: 8rem; padding-bottom: 6rem;">
         
         <!-- Текст наверху -->
         <div class="relative z-10 max-w-4xl mx-auto">
