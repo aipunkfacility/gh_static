@@ -15,25 +15,30 @@ function HeroSection(siteMeta) {
 
       <div class="hero-content">
         <div class="hero-text">
-          <h1 class="text-4xl md:text-6xl font-bold mb-4">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-md">
             ${escapeHTML(siteMeta.mainTitle)}
           </h1>
-          <p class="text-xl md:text-2xl">
+          <p class="text-xl md:text-2xl drop-shadow-md text-gray-100">
             ${escapeHTML(siteMeta.mainSubtitle)}
           </p>
         </div>
 
-        <div class="hero-buttons">
+        <div class="hero-buttons flex flex-col sm:flex-row gap-4 justify-center mt-8">
+          <!-- Кнопка 1: Главное действие (Оранжевая) -->
           <button
             onclick="smoothScroll('excursions')"
-            class="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition"
+            class="bg-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-orange-600 hover:scale-105 transition flex items-center justify-center gap-3"
           >
+            <i class="fas fa-map-marked-alt"></i>
             Выбрать экскурсию
           </button>
+
+          <!-- Кнопка 2: Второстепенное действие (Белая полупрозрачная или просто белая) -->
           <button
             onclick="smoothScroll('transport')"
-            class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-primary transition"
+            class="bg-white text-gray-800 px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-gray-100 hover:scale-105 transition flex items-center justify-center gap-3"
           >
+            <i class="fas fa-motorcycle text-orange-500"></i>
             Арендовать байк
           </button>
         </div>
