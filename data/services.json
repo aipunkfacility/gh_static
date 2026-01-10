@@ -5,7 +5,7 @@
     "slug": "visa-run-cambodia",
     "shortDescription": "Подходит срок визы? Организуем продление одним днем. Выезд 02:30, возвращение 16:00-17:00. Стоимость: 4 200 000 VND (всё включено).",
     "type": "visa",
-    "image": "./images/600.jpg",
+    "image": "./images/visarun.webp",
     "isPopular": true,
     "isActive": true
   },
@@ -25,9 +25,10 @@
     "slug": "money-exchange",
     "shortDescription": "Закончились наличные? Поможем оперативно и по честному курсу. Принимаем рубли безнал, валюту, криптовалюты.",
     "type": "exchange",
-    "image": "./images/600.jpg",
+    "image": "./images/exchange.webp",
     "isPopular": false,
     "isActive": true
   }
 ]
+
 
