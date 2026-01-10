@@ -6,8 +6,17 @@ function ExcursionsSection(excursions) {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           ${excursions.filter(e => e.isActive).map(excursion => {
             const message = `Хочу забронировать экскурсию: ${excursion.title}`;
+            
+            // ИСПРАВЛЕНИЕ: Добавляем блок с картинкой
+            const imageHtml = excursion.image 
+              ? `<div class="h-56 overflow-hidden group">
+                   <img src="${excursion.image}" alt="${escapeHTML(excursion.title)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                 </div>`
+              : '';
+
             return `
-              <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                ${imageHtml}
                 <div class="bg-primary text-white px-4 py-2 text-center font-bold">
                   ${escapeHTML(excursion.priceFrom)}
                 </div>
