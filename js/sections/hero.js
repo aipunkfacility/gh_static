@@ -24,21 +24,21 @@ function HeroSection(siteMeta) {
         </div>
 
         <div class="hero-buttons flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          <!-- Кнопка 1: Главное действие (Оранжевая) -->
+          <!-- Кнопка 1 -->
           <button
             onclick="smoothScroll('excursions')"
             class="bg-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-orange-600 hover:scale-105 transition flex items-center justify-center gap-3"
           >
-            <i class="fas fa-map-marked-alt"></i>
+            <i class="ph ph-map-trifold text-2xl"></i>
             Выбрать экскурсию
           </button>
 
-          <!-- Кнопка 2: Второстепенное действие (Белая полупрозрачная или просто белая) -->
+          <!-- Кнопка 2 -->
           <button
             onclick="smoothScroll('transport')"
             class="bg-white text-gray-800 px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-gray-100 hover:scale-105 transition flex items-center justify-center gap-3"
           >
-            <i class="fas fa-motorcycle text-orange-500"></i>
+            <i class="ph ph-moped text-orange-500 text-2xl"></i>
             Арендовать байк
           </button>
         </div>
@@ -47,4 +47,3 @@ function HeroSection(siteMeta) {
     </section>
   `;
 }
-
