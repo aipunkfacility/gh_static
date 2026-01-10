@@ -322,7 +322,7 @@ body {
   .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-/* HERO SECTION - ИСПРАВЛЕННАЯ ВЕРСИЯ */
+/* HERO SECTION - ЧИСТАЯ ВЕРСИЯ */
 .hero-section {
   position: relative;
   color: #fff;
@@ -352,11 +352,12 @@ body {
 
 .hero-bg img {
   object-fit: cover;
-  /* ГЛАВНОЕ ИСПРАВЛЕНИЕ:
-     30% от верха. Это "золотая середина".
-     Мы фокусируемся на верхней трети картинки (небо).
-     Джип (который в центре/внизу картинки) автоматически сдвинется ниже. */
-  object-position: center 30%;
+  /* 
+     ТАК КАК КАРТИНКА ТЕПЕРЬ ПРАВИЛЬНАЯ (С ВОЗДУХОМ):
+     Возвращаем классическое центрирование.
+     Машина будет в центре, небо сверху, песок снизу.
+  */
+  object-position: center center;
 }
 
 .hero-overlay {
@@ -377,12 +378,12 @@ body {
   display: flex;
   flex-direction: column;
   
-  /* Разносим текст и кнопки вверх-вниз */
+  /* Разносим текст и кнопки вверх-вниз (самый безопасный вариант) */
   justify-content: space-between;
   
   /* Отступы */
-  padding-top: 130px; 
-  padding-bottom: 60px; /* Кнопки будут чуть ниже */
+  padding-top: 120px; 
+  padding-bottom: 80px;
   padding-left: 1rem;
   padding-right: 1rem;
 }
