@@ -8,10 +8,11 @@ function PopularSection(excursions, services, transport, categories) {
   return `
     <section id="popular" class="py-16 bg-gray-50">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center mb-12">🔥 Популярное</h2>
+        <h2 class="text-4xl font-bold text-center mb-12 flex items-center justify-center gap-3">
+          <i class="ri-fire-line text-orange-500"></i> Популярное
+        </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           ${popularItems.map(item => {
-            // ИСПРАВЛЕНИЕ: Добавил image: item.image в объект
             if (item.type === 'excursion') {
                 return renderCardService({
                     title: item.title, 
