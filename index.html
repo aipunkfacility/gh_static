@@ -33,7 +33,9 @@
 
   <!-- Оптимизированные стили -->
   <link rel="stylesheet" href="./styles.css">
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <!-- ИКОНКИ REMIX ICON (Работают через CSS, надежно) -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body class="bg-gray-50 text-gray-800">
 
@@ -41,7 +43,8 @@
     <nav class="max-w-6xl mx-auto px-4 py-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center space-x-2">
-          <i class="fas fa-leaf text-secondary text-2xl"></i>
+          <!-- Логотип: Листок -->
+          <i class="ri-plant-line text-secondary text-2xl"></i>
           <span class="text-xl font-bold text-secondary">GreenHill<span class="text-primary">Tours</span></span>
         </div>
         
@@ -59,7 +62,7 @@
         <div class="flex items-center gap-3">
           <!-- Кнопка WhatsApp (скрыта на мобильных) -->
           <button onclick="openWhatsApp()" class="hidden md:block bg-green-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-green-600 transition">
-            <i class="ph ph-whatsapp-logo mr-2 text-xl"></i>
+            <i class="ri-whatsapp-line mr-2 align-middle"></i>WhatsApp
           </button>
           
           <!-- Гамбургер меню (только на мобильных) -->
@@ -82,7 +85,7 @@
       <a href="#contacts" onclick="toggleMobileMenu()">Контакты</a>
       <div class="mt-4 px-4">
         <button onclick="openWhatsApp(); toggleMobileMenu();" class="w-full bg-green-500 text-white px-4 py-3 rounded-lg font-bold hover:bg-green-600 transition">
-          <i class="fab fa-whatsapp mr-2"></i>Написать в WhatsApp
+          <i class="ri-whatsapp-line mr-2"></i>Написать в WhatsApp
         </button>
       </div>
     </div>
@@ -98,7 +101,7 @@
   <footer class="bg-dark text-white py-8">
     <div class="max-w-6xl mx-auto px-4 text-center">
       <div class="flex items-center justify-center space-x-2 mb-4">
-        <i class="fas fa-leaf text-2xl"></i>
+        <i class="ri-plant-line text-2xl"></i>
         <span class="text-xl font-bold">GreenHill<span class="text-primary">Tours</span></span>
       </div>
       <p class="text-gray-300 mb-4">Муйне: Отдых без забот. Экскурсии, трансферы и отели во Вьетнаме.</p>
@@ -106,8 +109,9 @@
     </div>
   </footer>
   
-  <button onclick="openWhatsApp()" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full shadow-lg hover:scale-110 transition z-50" aria-label="Чат в WhatsApp">
-    <i class="ph ph-whatsapp-logo text-3xl"></i>
+  <!-- Плавающая кнопка WhatsApp -->
+  <button onclick="openWhatsApp()" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full shadow-lg hover:scale-110 transition z-50 flex items-center justify-center" aria-label="Чат в WhatsApp">
+    <i class="ri-whatsapp-line text-3xl"></i>
   </button>
 
   <script src="./js/utils.js"></script>
@@ -129,5 +133,3 @@
   </script>
 </body>
 </html>
-
-
