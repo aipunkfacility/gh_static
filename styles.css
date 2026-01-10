@@ -328,8 +328,8 @@ body {
   color: #fff;
   text-align: center;
   overflow: hidden;
-  /* высота: минимум экран минус хедер, но можно больше если нужно */
-  min-height: calc(100vh - 72px);
+  /* ОБНОВЛЕНО: Фиксированная минимальная высота для мобильных/планшетов */
+  min-height: 600px;
   padding: 6rem 1rem 4rem;
   display: flex;
   align-items: stretch;
@@ -350,14 +350,15 @@ body {
 
 .hero-bg img {
   object-fit: cover;
-  /* ВАЖНО: Прижимаем картинку к низу, чтобы джип не обрезался */
+  /* ОБНОВЛЕНО: Для мобильных - джип (низ) важнее */
   object-position: center bottom;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
- background: transparent;
+  /* ОБНОВЛЕНО: Прозрачный фон по вашему запросу */
+  background: transparent;
 }
 
 /* Контент внутри hero */
@@ -390,5 +391,19 @@ body {
 @media (min-width: 640px) {
   .hero-buttons {
     flex-direction: row;
+  }
+}
+
+/* ОБНОВЛЕНО: Правила для больших экранов (Desktop) */
+@media (min-width: 1024px) {
+  
+  /* Делаем секцию повыше на ПК, но не зависимой от высоты экрана */
+  .hero-section {
+    min-height: 700px;
+  }
+
+  /* На десктопе центрируем картинку, чтобы было видно и небо (текст), и машину */
+  .hero-bg img {
+    object-position: center center;
   }
 }
