@@ -287,6 +287,21 @@ body {
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
+/* Hero начинается с самого верха экрана */
+#hero {
+  margin-top: 0 !important;
+}
+
+/* Остальные секции имеют отступ сверху */
+#popular,
+#excursions,
+#transport,
+#accommodation,
+#services,
+#contacts {
+  padding-top: 4rem;
+}
+
 /* Responsive */
 @media (min-width: 640px) {
   .sm\:flex-row { flex-direction: row; }
