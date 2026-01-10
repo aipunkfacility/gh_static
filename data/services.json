@@ -15,7 +15,7 @@
     "slug": "transfer-airport-muine",
     "shortDescription": "Забудьте про тесные автобусы. Toyota Fortuner (7 мест), кондиционер, багажник. Едем по новой скоростной трассе.",
     "type": "transfer",
-    "image": "./images/600.jpg",
+    "image": "./images/transfer.webp",
     "isPopular": true,
     "isActive": true
   },
@@ -30,5 +30,6 @@
     "isActive": true
   }
 ]
+
 
 
