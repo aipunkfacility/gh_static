@@ -1,7 +1,6 @@
 function HeroSection(siteMeta) {
   return `
-    <!-- Убираем все отступы сверху, так как main уже имеет pt-20 -->
-    <section id="hero" class="relative text-white px-4 text-center flex flex-col justify-center items-center overflow-hidden" style="min-height: calc(100vh - 5rem);">
+    <section id="hero" class="relative text-white px-4 text-center overflow-hidden" style="height: 80vh; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding-top: 3rem; padding-bottom: 3rem;">
       
       <!-- Фоновое изображение -->
       <div class="absolute inset-0 z-0">
@@ -12,21 +11,22 @@ function HeroSection(siteMeta) {
         <div class="absolute inset-0 bg-black/50"></div>
       </div>
       
-      <!-- Контент -->
+      <!-- Текст наверху -->
       <div class="relative z-10 max-w-4xl mx-auto">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6">${escapeHTML(siteMeta.mainTitle)}</h1>
-        <p class="text-xl md:text-2xl mb-8">${escapeHTML(siteMeta.mainSubtitle)}</p>
-        
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <button onclick="smoothScroll('excursions')" 
-                  class="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition">
-            Выбрать экскурсию
-          </button>
-          <button onclick="smoothScroll('transport')" 
-                  class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-primary transition">
-            Арендовать байк
-          </button>
-        </div>
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">${escapeHTML(siteMeta.mainTitle)}</h1>
+        <p class="text-xl md:text-2xl">${escapeHTML(siteMeta.mainSubtitle)}</p>
+      </div>
+      
+      <!-- Кнопки внизу -->
+      <div class="relative z-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <button onclick="smoothScroll('excursions')" 
+                class="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition">
+          Выбрать экскурсию
+        </button>
+        <button onclick="smoothScroll('transport')" 
+                class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-primary transition">
+          Арендовать байк
+        </button>
       </div>
     </section>
   `;
