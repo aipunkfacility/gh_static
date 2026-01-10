@@ -1,6 +1,6 @@
 function HeroSection(siteMeta) {
   return `
-    <section id="hero" class="relative text-white px-4 text-center overflow-hidden" style="height: 100vh; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding-top: 6rem; padding-bottom: 4rem;">
+    <section id="hero" class="relative text-white px-4 text-center overflow-hidden" style="height: 100vh; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding-top: 6rem; padding-bottom: 6rem;">
       
       <!-- Фоновое изображение -->
       <div class="absolute inset-0 z-0" style="top: 0;">
@@ -17,8 +17,8 @@ function HeroSection(siteMeta) {
         <p class="text-xl md:text-2xl">${escapeHTML(siteMeta.mainSubtitle)}</p>
       </div>
       
-      <!-- Кнопки внизу -->
-      <div class="relative z-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <!-- Кнопки внизу с большим отступом -->
+      <div class="relative z-10 flex flex-col sm:flex-row gap-4 justify-center" style="margin-bottom: 3rem;">
         <button onclick="smoothScroll('excursions')" 
                 class="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition">
           Выбрать экскурсию
