@@ -55,7 +55,7 @@
     "useCases": "Спортивный характер. Мощный мотор, широкие колеса, дерзкий дизайн.",
     "benefits": ["Спортивный дизайн", "Мощный", "Широкие колеса"],
     "specs": ["155cc", "ABS", "Ветрозащита"],
-    "image": "./images/nvxr.webp",
+    "image": "./images/nvx.webp",
     "isPopular": true,
     "isActive": true
   },
@@ -96,5 +96,6 @@
     "isActive": true
   }
 ]
+
 
 
