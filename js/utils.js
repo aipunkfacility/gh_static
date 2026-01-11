@@ -71,8 +71,8 @@ function formatServiceDetails(text) {
   let inList = false;
 
   lines.forEach(line => {
-    // Проверка на заголовок: начинается с иконок или заканчивается двоеточием
-    const isHeader = /^[\u2705\uD83D\uDD53\uD83D\uDCA0]/.test(line) || line.endsWith(':');
+    // Проверка на заголовок: начинается с определенных иконок или заканчивается двоеточием
+    const isHeader = /^[\u2705\uD83D\uDD53\uD83D\uDCA0\uD83D\uDCA3\uD83D\uDE90\uD83D\uDE98\uD83C\uDFD4\uD83C\uDFD6\uD83C\uDF03\uD83C\uDFA2\uD83C\uDFA1]/.test(line) || line.endsWith(':');
     // Проверка на пункт списка
     const isListItem = line.startsWith('•');
 
@@ -101,7 +101,7 @@ function formatServiceDetails(text) {
 }
 
 /**
- * Управляет состоянием аккордеона карточки услуги.
+ * Управляет состоянием аккордеона карточки.
  * Закрывает другие открытые карточки перед открытием выбранной.
  */
 function toggleServiceAccordion(element) {
@@ -110,7 +110,7 @@ function toggleServiceAccordion(element) {
 
   const isOpen = element.classList.contains('is-open');
 
-  // Закрываем все остальные открытые карточки услуг
+  // Закрываем все остальные открытые карточки с поддержкой аккордеона
   document.querySelectorAll('.service-card.is-open').forEach(card => {
     if (card !== element) card.classList.remove('is-open');
   });
