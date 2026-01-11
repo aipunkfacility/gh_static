@@ -1,135 +1,114 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- SEO: Основные теги -->
-  <title>Экскурсии в Муйне и Фантьете, Трансфер, Отели | Green Hill Tours</title>
-  <meta name="description" content="Организация отдыха в Муйне и Фантьете: джип-туры по дюнам, трансфер из аэропорта Хошимина и Камрани, аренда жилья и визы. Честные цены и русский сервис во Вьетнаме.">
-  <meta name="keywords" content="Муйне, Вьетнам, Фантьет, экскурсии, джип тур, трансфер, такси, отели, виза, Green Hill Tours">
-  
-  <!-- SEO: Для соцсетей (Open Graph) -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Green Hill Tours">
-  <meta property="og:title" content="Экскурсии в Муйне и Фантьете | Green Hill Tours">
-  <meta property="og:description" content="Джип-туры, трансферы из аэропорта, жилье и визы во Вьетнаме. Отдых без забот!">
-  <meta property="og:url" content="https://aipunkfacility.github.io/gh_static/">
-  <meta property="og:image" content="./images/og-preview.jpg">
-  
-  <!-- SEO: Каноническая ссылка -->
-  <link rel="canonical" href="https://aipunkfacility.github.io/gh_static/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Экскурсии и Трансфер в Муйне | Mui Ne Tours</title>
+    <meta name="description" content="Лучшие экскурсии, трансферы и визовая поддержка в Муйне, Вьетнам. Джип-туры, Далат, Нячанг.">
 
-  <!-- Favicon / Иконки -->
-  <link rel="icon" type="image/svg+xml" href="./my-favicon/favicon.svg">
-  <link rel="icon" type="image/png" sizes="96x96" href="./my-favicon/favicon-96x96.png">
-  <link rel="shortcut icon" href="./my-favicon/favicon.ico">
-  <link rel="apple-touch-icon" href="./my-favicon/apple-touch-icon.png">
-  <link rel="manifest" href="./my-favicon/site.webmanifest">
-  
-  <!-- Цвет темы -->
-  <meta name="apple-mobile-web-app-title" content="GreenHill">
-  <meta name="application-name" content="GreenHill">
+    <!-- Фавиконки -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./my-favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./my-favicon/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="./my-favicon/favicon.svg">
+    <link rel="shortcut icon" href="./my-favicon/favicon.ico">
+    <link rel="manifest" href="./my-favicon/site.webmanifest">
 
-  <!-- Оптимизированные стили -->
-  <link rel="stylesheet" href="./styles.css">
-  
-  <!-- ИКОНКИ REMIX ICON (Работают через CSS, надежно) -->
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Стили -->
+    <link rel="stylesheet" href="./styles.css">
+
+    <!-- Schema.org JSON-LD (SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelAgency",
+      "name": "Mui Ne Tours",
+      "image": "https://yoursite.com/images/og-preview.jpg",
+      "@id": "https://yoursite.com",
+      "url": "https://yoursite.com",
+      "telephone": "+84123456789",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Nguyen Dinh Chieu",
+        "addressLocality": "Phan Thiet",
+        "addressRegion": "Binh Thuan",
+        "postalCode": "800000",
+        "addressCountry": "VN"
+      },
+      "priceRange": "$$",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "08:00",
+        "closes": "22:00"
+      }
+    }
+    </script>
+
+    <!-- YANDEX METRIKA CODE HERE -->
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-  <header id="header" class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
-    <nav class="max-w-6xl mx-auto px-4 py-4">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center space-x-2">
-          <!-- Логотип: Листок -->
-          <i class="ri-plant-line text-secondary text-2xl"></i>
-          <span class="text-xl font-bold text-secondary">GreenHill<span class="text-primary">Tours</span></span>
+    <!-- Сообщение об ошибке (скрыто по умолчанию) -->
+    <div id="global-error-msg">
+        Не удалось загрузить данные. Пожалуйста, проверьте интернет или напишите нам в WhatsApp.
+    </div>
+
+    <!-- Основная навигация -->
+    <header id="header" class="site-header">
+        <div class="container">
+            <div class="logo">Mui Ne Tours</div>
+            <nav class="main-nav">
+                <a href="#excursions">Экскурсии</a>
+                <a href="#transport">Транспорт</a>
+                <a href="#services">Услуги</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
         </div>
-        
-        <!-- Десктопное меню -->
-        <div class="hidden md:flex space-x-8">
-          <a href="#hero" class="font-semibold hover:text-primary transition">Главная</a>
-          <a href="#excursions" class="font-semibold hover:text-primary transition">Экскурсии</a>
-          <a href="#transport" class="font-semibold hover:text-primary transition">Транспорт</a>
-          <a href="#accommodation" class="font-semibold hover:text-primary transition">Жилье</a>
-          <a href="#services" class="font-semibold hover:text-primary transition">Сервисы</a>
-          <a href="#contacts" class="font-semibold hover:text-primary transition">Контакты</a>
+    </header>
+
+    <main>
+        <!-- Секции, в которые JS будет рендерить контент -->
+        <section id="hero"></section>
+        <section id="popular"></section>
+        <section id="excursions"></section>
+        <section id="transport"></section>
+        <section id="services"></section>
+        <section id="contacts"></section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Mui Ne Tours. Все права защищены.</p>
         </div>
-        
-        <!-- Кнопки справа -->
-        <div class="flex items-center gap-3">
-          <!-- Кнопка WhatsApp (скрыта на мобильных) -->
-          <button onclick="openWhatsApp()" class="hidden md:block bg-green-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-green-600 transition">
-            <i class="ri-whatsapp-line mr-2 align-middle"></i>WhatsApp
-          </button>
-          
-          <!-- Гамбургер меню (только на мобильных) -->
-          <button id="mobile-menu-toggle" class="md:hidden hamburger" aria-label="Открыть меню">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-      </div>
-    </nav>
+    </footer>
+
+    <!-- Кнопка WhatsApp -->
+    <a href="https://wa.me/84123456789" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Написать в WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+    <!-- Скрипты -->
+    <script src="./js/config.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/components/cards.js"></script>
     
-    <!-- Мобильное выдвижное меню -->
-    <div id="mobile-menu" class="mobile-menu">
-      <a href="#hero" onclick="toggleMobileMenu()">Главная</a>
-      <a href="#excursions" onclick="toggleMobileMenu()">Экскурсии</a>
-      <a href="#transport" onclick="toggleMobileMenu()">Транспорт</a>
-      <a href="#accommodation" onclick="toggleMobileMenu()">Жилье</a>
-      <a href="#services" onclick="toggleMobileMenu()">Сервисы</a>
-      <a href="#contacts" onclick="toggleMobileMenu()">Контакты</a>
-      <div class="mt-4 px-4">
-        <button onclick="openWhatsApp(); toggleMobileMenu();" class="w-full bg-green-500 text-white px-4 py-3 rounded-lg font-bold hover:bg-green-600 transition">
-          <i class="ri-whatsapp-line mr-2"></i>Написать в WhatsApp
-        </button>
-      </div>
-    </div>
-  </header>
-  
-  <main id="app" class="min-h-screen">
-    <div class="flex flex-col items-center justify-center" style="height: 60vh; padding-top: 5rem;">
-      <div class="w-16 h-16 border-4 border-gray-200 border-t-primary rounded-full animate-spin"></div>
-      <p class="mt-6 text-lg text-gray-600 font-medium">Загружаем лучшие предложения...</p>
-    </div>
-  </main>
-  
-  <footer class="bg-dark text-white py-8">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <div class="flex items-center justify-center space-x-2 mb-4">
-        <i class="ri-plant-line text-2xl"></i>
-        <span class="text-xl font-bold">GreenHill<span class="text-primary">Tours</span></span>
-      </div>
-      <p class="text-gray-300 mb-4">Муйне: Отдых без забот. Экскурсии, трансферы и отели во Вьетнаме.</p>
-      <p class="text-gray-400 text-sm">© 2024 Green Hill Tours</p>
-    </div>
-  </footer>
-  
-  <!-- Плавающая кнопка WhatsApp -->
-  <button onclick="openWhatsApp()" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full shadow-lg hover:scale-110 transition z-50 flex items-center justify-center" aria-label="Чат в WhatsApp">
-    <i class="ri-whatsapp-line text-3xl"></i>
-  </button>
+    <!-- Секции -->
+    <script src="./js/sections/hero.js"></script>
+    <script src="./js/sections/popular.js"></script>
+    <script src="./js/sections/excursions.js"></script>
+    <script src="./js/sections/transport.js"></script>
+    <script src="./js/sections/services.js"></script>
+    <script src="./js/sections/contacts.js"></script>
 
-  <script src="./js/utils.js"></script>
-  <script src="./js/config.js"></script>
-
-  <script src="./js/components/cards.js"></script>
-  <script src="./js/sections/hero.js"></script>
-  <script src="./js/sections/popular.js"></script>
-  <script src="./js/sections/excursions.js"></script>
-  <script src="./js/sections/transport.js"></script>
-  <script src="./js/sections/accommodation.js"></script>
-  <script src="./js/sections/services.js"></script>
-  <script src="./js/sections/contacts.js"></script>
-  <script src="./js/main.js"></script>
-  
-  <script>
-    // Инициализация мобильного меню
-    document.getElementById('mobile-menu-toggle').addEventListener('click', toggleMobileMenu);
-  </script>
+    <!-- Основной скрипт инициализации -->
+    <script src="./js/main.js"></script>
 </body>
 </html>
