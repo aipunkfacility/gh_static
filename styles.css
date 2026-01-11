@@ -452,3 +452,86 @@ body {
 .flex-grow { flex-grow: 1; }
 .mt-auto { margin-top: auto; }
 .h-full { height: 100%; }
+
+/* --- ACCORDION FOR SERVICES --- */
+
+/* Карточка услуги с поддержкой аккордеона */
+.service-card {
+  transition: all 0.3s ease;
+}
+
+.service-card.is-clickable {
+  cursor: pointer;
+}
+
+.service-card.is-clickable:hover {
+  background-color: #fffaf7; /* Очень легкий оранжевый оттенок при наведении */
+}
+
+/* Скрытие короткого описания при открытии */
+.service-card.is-open .service-short-desc {
+  display: none;
+}
+
+/* Анимация chevron */
+.accordion-chevron {
+  transition: transform 0.3s ease;
+}
+
+.service-card.is-open .accordion-chevron {
+  transform: rotate(180deg);
+}
+
+/* Контейнер раскрывающегося контента */
+.service-details-container {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+  overflow: hidden;
+}
+
+.service-card.is-open .service-details-container {
+  grid-template-rows: 1fr;
+}
+
+.service-details-content {
+  min-height: 0;
+}
+
+/* Стилизация внутреннего контента деталей */
+.service-details-header {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--dark);
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.25rem;
+}
+
+.service-details-text {
+  margin-bottom: 0.75rem;
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.service-details-list {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+.service-details-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+.service-details-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
