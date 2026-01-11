@@ -1,3 +1,6 @@
+/**
+ * КАРТОЧКА УСЛУГИ / ЭКСКУРСИИ
+ */
 function renderCardService(service) {
   const title = service.title || '';
   const hasDetails = !!(service.details && service.details.trim());
@@ -10,25 +13,20 @@ function renderCardService(service) {
        </div>`
     : '';
 
-  // Формируем структурированные детали, если они есть
   const detailsHtml = hasDetails ? formatServiceDetails(service.details) : '';
 
   return `
     <div class="service-card bg-white rounded-lg shadow-md hover:shadow-lg transition overflow-hidden flex flex-col h-full ${hasDetails ? 'is-clickable' : ''}" 
          ${hasDetails ? 'onclick="toggleServiceAccordion(this)"' : ''}>
-      
       ${imageHtml}
-      
       <div class="p-6 flex flex-col flex-grow">
         <div class="flex justify-between items-start mb-3">
           <h3 class="text-xl font-bold text-gray-800">${escapeHTML(title)}</h3>
           ${hasDetails ? '<i class="ri-arrow-down-s-line accordion-chevron text-2xl text-gray-400"></i>' : ''}
         </div>
 
-        <!-- Краткое описание (скрывается при открытии) -->
         <p class="service-short-desc text-gray-600 mb-4 flex-grow">${escapeHTML(service.shortDescription || '')}</p>
 
-        <!-- Раскрывающийся блок деталей -->
         ${hasDetails ? `
           <div class="service-details-container">
             <div class="service-details-content">
@@ -45,9 +43,13 @@ function renderCardService(service) {
   `;
 }
 
+/**
+ * КАРТОЧКА ТРАНСПОРТА
+ */
 function renderCardTransport(transport, categories) {
   const category = categories ? categories.find(c => c.id === transport.categoryId) : null;
   const title = transport.title || '';
+  const hasDetails = !!(transport.details && transport.details.trim());
   const message = `Хочу забронировать: ${title}`;
   const safeMessage = escapeHTML(message).replace(/'/g, "\\'");
 
@@ -60,32 +62,44 @@ function renderCardTransport(transport, categories) {
       </div>`;
   }
 
-  const headerBadge = (!transport.image && category) 
-    ? `<span class="inline-block mt-2 px-3 py-1 text-sm rounded-full ${getCategoryColor(category.slug)}">${escapeHTML(category.title)}</span>`
-    : '';
+  const detailsHtml = hasDetails ? formatServiceDetails(transport.details) : '';
 
   return `
-    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col h-full">
+    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col h-full ${hasDetails ? 'is-clickable' : ''}"
+         ${hasDetails ? 'onclick="toggleServiceAccordion(this)"' : ''}>
       ${topContent}
-      <div class="bg-gray-100 p-4 border-b flex-shrink-0">
+      <div class="bg-gray-100 p-4 border-b flex-shrink-0 flex justify-between items-center">
         <h3 class="text-lg font-bold">${escapeHTML(title)}</h3>
-        ${headerBadge}
+        ${hasDetails ? '<i class="ri-arrow-down-s-line accordion-chevron text-xl text-gray-500"></i>' : ''}
       </div>
       <div class="p-6 flex flex-col flex-grow">
-        <p class="text-gray-600 mb-4">${escapeHTML(transport.useCases || '')}</p>
-        <div class="mb-4 flex-grow">
-          <h4 class="font-semibold mb-2">Преимущества:</h4>
-          <ul class="list-disc list-inside text-gray-600 text-sm">
-            ${(transport.benefits || []).map(b => `<li>${escapeHTML(b)}</li>`).join('')}
-          </ul>
+        <p class="service-short-desc text-gray-600 mb-4">${escapeHTML(transport.useCases || '')}</p>
+        
+        <!-- Характеристики (скрываются при открытии деталей) -->
+        <div class="service-short-desc flex-grow">
+          <div class="mb-4">
+            <h4 class="font-semibold mb-2">Преимущества:</h4>
+            <ul class="list-disc list-inside text-gray-600 text-sm">
+              ${(transport.benefits || []).map(b => `<li>${escapeHTML(b)}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="mb-4">
+            <h4 class="font-semibold mb-2">Характеристики:</h4>
+            <ul class="list-disc list-inside text-gray-600 text-sm">
+              ${(transport.specs || []).map(s => `<li>${escapeHTML(s)}</li>`).join('')}
+            </ul>
+          </div>
         </div>
-        <div class="mb-4">
-          <h4 class="font-semibold mb-2">Характеристики:</h4>
-          <ul class="list-disc list-inside text-gray-600 text-sm">
-            ${(transport.specs || []).map(s => `<li>${escapeHTML(s)}</li>`).join('')}
-          </ul>
-        </div>
-        <button onclick="openWhatsApp('${safeMessage}')" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition mt-auto flex items-center justify-center">
+
+        ${hasDetails ? `
+          <div class="service-details-container">
+            <div class="service-details-content">
+              ${detailsHtml}
+            </div>
+          </div>
+        ` : ''}
+
+        <button onclick="event.stopPropagation(); openWhatsApp('${safeMessage}')" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition mt-auto flex items-center justify-center">
           <i class="ri-motorbike-fill mr-2 text-xl"></i>Забронировать
         </button>
       </div>
@@ -93,8 +107,12 @@ function renderCardTransport(transport, categories) {
   `;
 }
 
+/**
+ * КАРТОЧКА ПРОЖИВАНИЯ
+ */
 function renderCardAccommodation(acc) {
   const title = acc.title || '';
+  const hasDetails = !!(acc.details && acc.details.trim());
   const message = `Хочу узнать цены на: ${title}`;
   const safeMessage = escapeHTML(message).replace(/'/g, "\\'");
 
@@ -106,58 +124,53 @@ function renderCardAccommodation(acc) {
          </div>
        </div>`
     : ''; 
-  
-  const titleHtml = !acc.image 
-    ? `<h3 class="text-2xl font-bold mb-4 text-gray-800">${escapeHTML(title)}</h3>` 
-    : '';
+
+  const detailsHtml = hasDetails ? formatServiceDetails(acc.details) : '';
 
   return `
-    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col h-full">
+    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col h-full ${hasDetails ? 'is-clickable' : ''}"
+         ${hasDetails ? 'onclick="toggleServiceAccordion(this)"' : ''}>
       ${imageHtml}
 
       <div class="p-8 flex flex-col flex-grow">
-        ${titleHtml}
-        <p class="text-gray-600 mb-6 italic border-l-4 border-purple-500 pl-4">${escapeHTML(acc.slogan || '')}</p>
-        
-        <div class="mb-4">
-          <h4 class="font-semibold mb-2 flex items-center">
-            <i class="ri-home-smile-line text-green-600 mr-2 text-xl"></i>Территория:
-          </h4>
-          <p class="text-gray-600">${escapeHTML(acc.territoryDescription || '')}</p>
+        <div class="flex justify-between items-start mb-4">
+          ${!acc.image ? `<h3 class="text-2xl font-bold text-gray-800">${escapeHTML(title)}</h3>` : '<span></span>'}
+          ${hasDetails ? '<i class="ri-arrow-down-s-line accordion-chevron text-2xl text-gray-400"></i>' : ''}
         </div>
+
+        <p class="service-short-desc text-gray-600 mb-6 italic border-l-4 border-purple-500 pl-4">${escapeHTML(acc.slogan || '')}</p>
         
-        <div class="mb-4 flex-grow">
-          <h4 class="font-semibold mb-2 flex items-center">
-            <i class="ri-hotel-bed-line text-blue-500 mr-2 text-xl"></i>В номерах:
-          </h4>
-          <ul class="list-disc list-inside text-gray-600 ml-1">
-            ${(acc.roomFeatures || []).map(f => `<li>${escapeHTML(f)}</li>`).join('')}
-          </ul>
+        <!-- Краткие блоки (скрываются при открытии) -->
+        <div class="service-short-desc flex-grow">
+          <div class="mb-4">
+            <h4 class="font-semibold mb-2 flex items-center"><i class="ri-home-smile-line text-green-600 mr-2"></i>Территория:</h4>
+            <p class="text-gray-600">${escapeHTML(acc.territoryDescription || '')}</p>
+          </div>
+          <div class="mb-6">
+            <h4 class="font-semibold mb-2 flex items-center"><i class="ri-map-pin-line text-red-500 mr-2"></i>Локация:</h4>
+            <p class="text-gray-800 font-medium">${escapeHTML(acc.address || '')}</p>
+          </div>
         </div>
+
+        ${hasDetails ? `
+          <div class="service-details-container">
+            <div class="service-details-content">
+              ${detailsHtml}
+            </div>
+          </div>
+        ` : ''}
         
-        <div class="mb-4">
-          <h4 class="font-semibold mb-2 flex items-center">
-            <i class="ri-cup-line text-orange-500 mr-2 text-xl"></i>Атмосфера:
-          </h4>
-          <p class="text-gray-600">${escapeHTML(acc.atmosphere || '')}</p>
-        </div>
-        
-        <div class="mb-6">
-          <h4 class="font-semibold mb-2 flex items-center">
-            <i class="ri-map-pin-line text-red-500 mr-2 text-xl"></i>Локация:
-          </h4>
-          <p class="text-gray-600">${escapeHTML(acc.locationDescription || '')}</p>
-          <p class="text-gray-800 font-medium mt-1 ml-7">${escapeHTML(acc.address || '')}</p>
-        </div>
-        
-        <button onclick="openWhatsApp('${safeMessage}')" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition mt-auto flex items-center justify-center">
-          <i class="ri-price-tag-3-line mr-2 align-bottom"></i>Узнать цены
+        <button onclick="event.stopPropagation(); openWhatsApp('${safeMessage}')" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition mt-auto flex items-center justify-center">
+          <i class="ri-price-tag-3-line mr-2"></i>Узнать цены
         </button>
       </div>
     </div>
   `;
 }
 
+/**
+ * КАРТОЧКА ОФИСА
+ */
 function renderCardOffice(office) {
   const title = office.title || '';
   const message = `Здравствуйте! У меня вопрос по офису: ${title}`;
