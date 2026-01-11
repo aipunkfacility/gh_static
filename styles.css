@@ -385,6 +385,17 @@ body {
   background: transparent;
 }
 
+/* ТЕКСТ HERO - Стилизация по вашему запросу */
+.hero-text h1, 
+.hero-text p {
+    color: #FFFFFF;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* Чуть усилил непрозрачность для надежности */
+}
+
+.hero-text h1 {
+    font-weight: 800; /* Делаем заголовок мощнее */
+}
+
 /* Контент внутри hero */
 .hero-content {
   position: relative;
@@ -428,7 +439,7 @@ body {
   }
 }
 
-/* ВАЖНО: Добавьте это в конец styles.css для высоты карточек */
+/* ВАЖНО: Высота карточек */
 .h-48 { height: 12rem; } /* ~192px */
 .h-56 { height: 14rem; } /* ~224px */
 .h-64 { height: 16rem; } /* ~256px */
