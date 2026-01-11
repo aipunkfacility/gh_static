@@ -176,18 +176,24 @@ function renderCardAccommodation(acc) {
  */
 function renderCardOffice(office) {
   const title = office.title || '';
+  const address = office.address || '';
+  
+  // Логика выбора ссылки на карту
+  let mapUrl = '#';
+  if (address.includes('121')) mapUrl = 'https://maps.app.goo.gl/CoBgDGcdES5Ktx1G6';
+  else if (address.includes('107')) mapUrl = 'https://maps.app.goo.gl/yUP4APRYq7dLKTDn9';
 
   return `
-    <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-blue-500 flex flex-col h-full">
+    <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-blue-500 flex flex-col items-center text-center h-full">
       <h3 class="text-xl font-bold mb-3">${escapeHTML(title)}</h3>
-      <p class="text-gray-600 mb-4 flex-grow">${escapeHTML(office.description || '')}</p>
-      <div class="mb-2">
-        <p class="font-semibold">📍 Адрес:</p>
-        <p class="text-gray-600">${escapeHTML(office.address || '')}</p>
-      </div>
-      <div class="mb-4">
-        <p class="font-semibold">⏰ Время работы:</p>
-        <p class="text-gray-600">${escapeHTML(office.workTime || '')}</p>
+      <p class="text-gray-600 mb-6 flex-grow">${escapeHTML(office.description || '')}</p>
+      
+      <div class="mt-auto">
+        <p class="font-semibold mb-1 text-gray-800">📍 Адрес:</p>
+        <a href="${mapUrl}" target="_blank" class="text-blue-500 hover:text-blue-700 underline transition flex items-center justify-center gap-1">
+          ${escapeHTML(address)}
+          <i class="ri-external-link-line text-sm"></i>
+        </a>
       </div>
     </div>
   `;
