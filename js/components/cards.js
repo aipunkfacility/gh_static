@@ -1,7 +1,7 @@
 function renderCardService(service) {
   const title = service.title || '';
+  const hasDetails = !!(service.details && service.details.trim());
   const message = `Хочу заказать: ${title}`;
-  // Экранируем кавычки для безопасной вставки в onclick='...'
   const safeMessage = escapeHTML(message).replace(/'/g, "\\'");
 
   const imageHtml = service.image 
@@ -10,13 +10,34 @@ function renderCardService(service) {
        </div>`
     : '';
 
+  // Формируем структурированные детали, если они есть
+  const detailsHtml = hasDetails ? formatServiceDetails(service.details) : '';
+
   return `
-    <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition overflow-hidden flex flex-col h-full">
+    <div class="service-card bg-white rounded-lg shadow-md hover:shadow-lg transition overflow-hidden flex flex-col h-full ${hasDetails ? 'is-clickable' : ''}" 
+         ${hasDetails ? 'onclick="toggleServiceAccordion(this)"' : ''}>
+      
       ${imageHtml}
+      
       <div class="p-6 flex flex-col flex-grow">
-        <h3 class="text-xl font-bold text-gray-800 mb-3">${escapeHTML(title)}</h3>
-        <p class="text-gray-600 mb-4 flex-grow">${escapeHTML(service.shortDescription || '')}</p>
-        <button onclick="openWhatsApp('${safeMessage}')" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition mt-auto flex items-center justify-center">
+        <div class="flex justify-between items-start mb-3">
+          <h3 class="text-xl font-bold text-gray-800">${escapeHTML(title)}</h3>
+          ${hasDetails ? '<i class="ri-arrow-down-s-line accordion-chevron text-2xl text-gray-400"></i>' : ''}
+        </div>
+
+        <!-- Краткое описание (скрывается при открытии) -->
+        <p class="service-short-desc text-gray-600 mb-4 flex-grow">${escapeHTML(service.shortDescription || '')}</p>
+
+        <!-- Раскрывающийся блок деталей -->
+        ${hasDetails ? `
+          <div class="service-details-container">
+            <div class="service-details-content">
+              ${detailsHtml}
+            </div>
+          </div>
+        ` : ''}
+
+        <button onclick="event.stopPropagation(); openWhatsApp('${safeMessage}')" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition mt-6 flex items-center justify-center">
           <i class="ri-whatsapp-line mr-2 text-xl"></i>Заказать
         </button>
       </div>
