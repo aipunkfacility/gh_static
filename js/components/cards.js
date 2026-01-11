@@ -64,7 +64,7 @@ function renderCardTransport(transport, categories) {
             ${(transport.specs || []).map(s => `<li>${escapeHTML(s)}</li>`).join('')}
           </ul>
         </div>
-        <button onclick="openWhatsApp('${safeMessage}')" class="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-green-600 transition mt-auto flex items-center justify-center">
+        <button onclick="openWhatsApp('${safeMessage}')" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition mt-auto flex items-center justify-center">
           <i class="ri-motorbike-fill mr-2 text-xl"></i>Забронировать
         </button>
       </div>
@@ -129,7 +129,7 @@ function renderCardAccommodation(acc) {
           <p class="text-gray-800 font-medium mt-1 ml-7">${escapeHTML(acc.address || '')}</p>
         </div>
         
-        <button onclick="openWhatsApp('${safeMessage}')" class="w-full bg-purple-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-purple-600 transition mt-auto flex items-center justify-center">
+        <button onclick="openWhatsApp('${safeMessage}')" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition mt-auto flex items-center justify-center">
           <i class="ri-price-tag-3-line mr-2 align-bottom"></i>Узнать цены
         </button>
       </div>
@@ -154,7 +154,7 @@ function renderCardOffice(office) {
         <p class="font-semibold">⏰ Время работы:</p>
         <p class="text-gray-600">${escapeHTML(office.workTime || '')}</p>
       </div>
-      <button onclick="openWhatsApp('${safeMessage}')" class="w-full bg-blue-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-blue-600 transition mt-auto flex items-center justify-center">
+      <button onclick="openWhatsApp('${safeMessage}')" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition mt-auto flex items-center justify-center">
         <i class="ri-whatsapp-line mr-2"></i>Написать в WhatsApp
       </button>
     </div>
