@@ -468,9 +468,14 @@ body {
   background-color: #fffaf7; /* Очень легкий оранжевый оттенок при наведении */
 }
 
-/* Скрытие короткого описания при открытии */
+/* Стилизация подзаголовка/вступления (shortDescription) */
+.service-short-desc {
+  transition: margin-bottom 0.3s ease;
+}
+
+/* Добавляем отступ при открытии, чтобы отделить вступление от деталей */
 .service-card.is-open .service-short-desc {
-  display: none;
+  margin-bottom: 1rem;
 }
 
 /* Анимация chevron */
