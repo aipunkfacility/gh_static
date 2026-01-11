@@ -6,7 +6,7 @@ function HeroSection(siteMeta) {
         <picture>
           <source media="(min-width: 1024px)" srcset="./images/hero-desktop.webp">
           <img 
-            src="./images/hero-mobile.jpg" 
+            src="./images/hero-mobile.webp" 
             alt="${escapeHTML(siteMeta.mainTitle)}"
           >
         </picture>
@@ -47,4 +47,5 @@ function HeroSection(siteMeta) {
     </section>
   `;
 }
+
 
