@@ -17,6 +17,26 @@
   <meta property="og:url" content="https://aipunkfacility.github.io/gh_static/">
   <meta property="og:image" content="./images/og-preview.jpg">
   
+  <!-- SEO: Schema.org (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "Green Hill Tours",
+    "description": "Организация отдыха в Муйне и Фантьете: джип-туры по дюнам, трансфер из аэропорта Хошимина, аренда жилья и визаран.",
+    "url": "https://aipunkfacility.github.io/gh_static/",
+    "telephone": "+84372733431",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "121 Nguyễn Đình Chiểu, Ham Tien",
+      "addressLocality": "Mui Ne, Phan Thiet",
+      "addressCountry": "VN"
+    },
+    "openingHours": "Mo-Su 08:00-22:00",
+    "priceRange": "$$"
+  }
+  </script>
+
   <!-- SEO: Каноническая ссылка -->
   <link rel="canonical" href="https://aipunkfacility.github.io/gh_static/">
 
@@ -34,10 +54,17 @@
   <!-- Оптимизированные стили -->
   <link rel="stylesheet" href="./styles.css">
   
-  <!-- ИКОНКИ REMIX ICON (Работают через CSS, надежно) -->
+  <!-- ИКОНКИ REMIX ICON -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- ANALYTICS PLACEHOLDER -->
 </head>
 <body class="bg-gray-50 text-gray-800">
+
+  <!-- Глобальное сообщение об ошибке (скрыто по умолчанию) -->
+  <div id="global-error-msg">
+    Не удалось загрузить данные. Пожалуйста, проверьте интернет или напишите нам в WhatsApp.
+  </div>
 
   <header id="header" class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
     <nav class="max-w-6xl mx-auto px-4 py-4">
@@ -110,7 +137,7 @@
   </footer>
   
   <!-- Плавающая кнопка WhatsApp -->
-  <button onclick="openWhatsApp()" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full shadow-lg hover:scale-110 transition z-50 flex items-center justify-center" aria-label="Чат в WhatsApp">
+  <button onclick="openWhatsApp()" class="whatsapp-float fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full shadow-lg hover:scale-110 transition z-50 flex items-center justify-center" aria-label="Чат в WhatsApp">
     <i class="ri-whatsapp-line text-3xl"></i>
   </button>
 
