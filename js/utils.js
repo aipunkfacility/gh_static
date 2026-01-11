@@ -60,19 +60,24 @@ function smoothScroll(elementId) {
 
 // Глобальная функция для открытия WhatsApp чата
 function openWhatsApp(message) {
-  // Используем переданное сообщение или дефолтное
-  const defaultMessage = 'Здравствуйте! У меня вопрос';
+  const defaultMessage = (typeof CONFIG !== 'undefined' && CONFIG.WHATSAPP_DEFAULT_MESSAGE) 
+    ? CONFIG.WHATSAPP_DEFAULT_MESSAGE 
+    : 'Здравствуйте! У меня вопрос';
+    
   const finalMessage = message || defaultMessage;
   
-  // Пытаемся получить номер из siteMeta, если доступен
-  let phoneNumber = '84372733431'; // fallback номер
-  
-  if (typeof siteMeta !== 'undefined' && siteMeta && siteMeta.whatsappNumber) {
-    phoneNumber = siteMeta.whatsappNumber;
+  // Получаем номер из siteMeta или используем fallback
+  let rawNumber = '84372733431';
+  if (typeof window.siteMeta !== 'undefined' && window.siteMeta && window.siteMeta.whatsappNumber) {
+    rawNumber = window.siteMeta.whatsappNumber;
   }
   
+  // ОЧИСТКА НОМЕРА: удаляем +, пробелы, скобки, тире
+  // Оставляем только цифры. WhatsApp API требует формат без +
+  const cleanNumber = String(rawNumber).replace(/\D/g, '');
+  
   const encodedMessage = encodeURIComponent(finalMessage);
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
   
   window.open(whatsappUrl, '_blank');
 }
@@ -83,10 +88,7 @@ function toggleMobileMenu() {
   const hamburger = document.getElementById('mobile-menu-toggle');
   
   if (mobileMenu && hamburger) {
-    // Переключаем класс active на меню
     mobileMenu.classList.toggle('active');
-    
-    // Переключаем класс active на гамбургере (для анимации)
     hamburger.classList.toggle('active');
     
     // Предотвращаем скролл body когда меню открыто
