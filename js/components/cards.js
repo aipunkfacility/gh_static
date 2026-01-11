@@ -50,6 +50,11 @@ function renderCardTransport(transport, categories) {
   const category = categories ? categories.find(c => c.id === transport.categoryId) : null;
   const title = transport.title || '';
   const hasDetails = !!(transport.details && transport.details.trim());
+  const hasSpecs = (transport.benefits && transport.benefits.length > 0) || (transport.specs && transport.specs.length > 0);
+  
+  // Карточка кликабельна, если есть либо details, либо списки характеристик
+  const isExpandable = hasDetails || hasSpecs;
+  
   const message = `Хочу забронировать: ${title}`;
   const safeMessage = escapeHTML(message).replace(/'/g, "\\'");
 
@@ -65,41 +70,43 @@ function renderCardTransport(transport, categories) {
   const detailsHtml = hasDetails ? formatServiceDetails(transport.details) : '';
 
   return `
-    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col h-full ${hasDetails ? 'is-clickable' : ''}"
-         ${hasDetails ? 'onclick="toggleServiceAccordion(this)"' : ''}>
+    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col h-full ${isExpandable ? 'is-clickable' : ''}"
+         ${isExpandable ? 'onclick="toggleServiceAccordion(this)"' : ''}>
       ${topContent}
       <div class="bg-gray-100 p-4 border-b flex-shrink-0 flex justify-between items-center">
         <h3 class="text-lg font-bold">${escapeHTML(title)}</h3>
-        ${hasDetails ? '<i class="ri-arrow-down-s-line accordion-chevron text-xl text-gray-500"></i>' : ''}
+        ${isExpandable ? '<i class="ri-arrow-down-s-line accordion-chevron text-xl text-gray-500"></i>' : ''}
       </div>
       <div class="p-6 flex flex-col flex-grow">
-        <p class="service-short-desc text-gray-600 mb-4">${escapeHTML(transport.useCases || '')}</p>
+        <!-- В закрытом состоянии только Use Cases -->
+        <p class="service-short-desc text-gray-600 mb-4 flex-grow">${escapeHTML(transport.useCases || '')}</p>
         
-        <!-- Характеристики (скрываются при открытии деталей) -->
-        <div class="service-short-desc flex-grow">
-          <div class="mb-4">
-            <h4 class="font-semibold mb-2">Преимущества:</h4>
-            <ul class="list-disc list-inside text-gray-600 text-sm">
-              ${(transport.benefits || []).map(b => `<li>${escapeHTML(b)}</li>`).join('')}
-            </ul>
-          </div>
-          <div class="mb-4">
-            <h4 class="font-semibold mb-2">Характеристики:</h4>
-            <ul class="list-disc list-inside text-gray-600 text-sm">
-              ${(transport.specs || []).map(s => `<li>${escapeHTML(s)}</li>`).join('')}
-            </ul>
-          </div>
-        </div>
-
-        ${hasDetails ? `
+        <!-- Все остальное уходит в раскрывающийся блок -->
+        ${isExpandable ? `
           <div class="service-details-container">
             <div class="service-details-content">
               ${detailsHtml}
+              
+              <div class="mt-4 pt-4 border-t border-gray-100">
+                ${transport.benefits && transport.benefits.length > 0 ? `
+                  <h4 class="font-bold text-gray-800 mb-2">Преимущества:</h4>
+                  <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                    ${transport.benefits.map(b => `<li>${escapeHTML(b)}</li>`).join('')}
+                  </ul>
+                ` : ''}
+                
+                ${transport.specs && transport.specs.length > 0 ? `
+                  <h4 class="font-bold text-gray-800 mb-2">Характеристики:</h4>
+                  <ul class="list-disc list-inside text-gray-600 text-sm">
+                    ${transport.specs.map(s => `<li>${escapeHTML(s)}</li>`).join('')}
+                  </ul>
+                ` : ''}
+              </div>
             </div>
           </div>
         ` : ''}
 
-        <button onclick="event.stopPropagation(); openWhatsApp('${safeMessage}')" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition mt-auto flex items-center justify-center">
+        <button onclick="event.stopPropagation(); openWhatsApp('${safeMessage}')" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition mt-6 flex items-center justify-center">
           <i class="ri-motorbike-fill mr-2 text-xl"></i>Забронировать
         </button>
       </div>
