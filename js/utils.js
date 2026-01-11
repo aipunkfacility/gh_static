@@ -50,6 +50,79 @@ function filterValidActive(items, validator) {
   return items.filter(item => validator(item));
 }
 
+/**
+ * Преобразует текстовое поле details в структурированный HTML.
+ * Фильтрует контакты и ссылки, распознает заголовки и списки.
+ */
+function formatServiceDetails(text) {
+  if (!text) return '';
+
+  const lines = text.split('\n')
+    .map(line => line.trim())
+    .filter(line => {
+      // Игнорируем пустые строки и строки с контактами/ссылками
+      return line && 
+             !line.includes('@GreenHill_Support') && 
+             !line.includes('wa.me') && 
+             !line.startsWith('👉');
+    });
+
+  let html = '';
+  let inList = false;
+
+  lines.forEach(line => {
+    // Проверка на заголовок: начинается с иконок или заканчивается двоеточием
+    const isHeader = /^[\u2705\uD83D\uDD53\uD83D\uDCA0]/.test(line) || line.endsWith(':');
+    // Проверка на пункт списка
+    const isListItem = line.startsWith('•');
+
+    if (isListItem) {
+      if (!inList) {
+        html += '<ul class="service-details-list">';
+        inList = true;
+      }
+      html += `<li>${escapeHTML(line.substring(1).trim())}</li>`;
+    } else {
+      if (inList) {
+        html += '</ul>';
+        inList = false;
+      }
+
+      if (isHeader) {
+        html += `<h4 class="service-details-header">${escapeHTML(line)}</h4>`;
+      } else {
+        html += `<p class="service-details-text">${escapeHTML(line)}</p>`;
+      }
+    }
+  });
+
+  if (inList) html += '</ul>';
+  return html;
+}
+
+/**
+ * Управляет состоянием аккордеона карточки услуги.
+ * Закрывает другие открытые карточки перед открытием выбранной.
+ */
+function toggleServiceAccordion(element) {
+  // Если у элемента нет деталей, он не кликабелен
+  if (!element.classList.contains('is-clickable')) return;
+
+  const isOpen = element.classList.contains('is-open');
+
+  // Закрываем все остальные открытые карточки услуг
+  document.querySelectorAll('.service-card.is-open').forEach(card => {
+    if (card !== element) card.classList.remove('is-open');
+  });
+
+  // Переключаем состояние текущей
+  if (isOpen) {
+    element.classList.remove('is-open');
+  } else {
+    element.classList.add('is-open');
+  }
+}
+
 // Кросс-браузерный плавный скролл
 function smoothScroll(elementId) {
   const element = document.getElementById(elementId);
@@ -73,7 +146,6 @@ function openWhatsApp(message) {
   }
   
   // ОЧИСТКА НОМЕРА: удаляем +, пробелы, скобки, тире
-  // Оставляем только цифры. WhatsApp API требует формат без +
   const cleanNumber = String(rawNumber).replace(/\D/g, '');
   
   const encodedMessage = encodeURIComponent(finalMessage);
