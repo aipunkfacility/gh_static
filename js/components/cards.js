@@ -52,7 +52,6 @@ function renderCardTransport(transport, categories) {
   const hasDetails = !!(transport.details && transport.details.trim());
   const hasSpecs = (transport.benefits && transport.benefits.length > 0) || (transport.specs && transport.specs.length > 0);
   
-  // Карточка кликабельна, если есть либо details, либо списки характеристик
   const isExpandable = hasDetails || hasSpecs;
   
   const message = `Хочу забронировать: ${title}`;
@@ -78,10 +77,8 @@ function renderCardTransport(transport, categories) {
         ${isExpandable ? '<i class="ri-arrow-down-s-line accordion-chevron text-xl text-gray-500"></i>' : ''}
       </div>
       <div class="p-6 flex flex-col flex-grow">
-        <!-- В закрытом состоянии только Use Cases -->
         <p class="service-short-desc text-gray-600 mb-4 flex-grow">${escapeHTML(transport.useCases || '')}</p>
         
-        <!-- Все остальное уходит в раскрывающийся блок -->
         ${isExpandable ? `
           <div class="service-details-container">
             <div class="service-details-content">
@@ -147,7 +144,6 @@ function renderCardAccommodation(acc) {
 
         <p class="service-short-desc text-gray-600 mb-6 italic border-l-4 border-purple-500 pl-4">${escapeHTML(acc.slogan || '')}</p>
         
-        <!-- Краткие блоки (скрываются при открытии) -->
         <div class="service-short-desc flex-grow">
           <div class="mb-4">
             <h4 class="font-semibold mb-2 flex items-center"><i class="ri-home-smile-line text-green-600 mr-2"></i>Территория:</h4>
@@ -180,8 +176,6 @@ function renderCardAccommodation(acc) {
  */
 function renderCardOffice(office) {
   const title = office.title || '';
-  const message = `Здравствуйте! У меня вопрос по офису: ${title}`;
-  const safeMessage = escapeHTML(message).replace(/'/g, "\\'");
 
   return `
     <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-blue-500 flex flex-col h-full">
@@ -195,9 +189,6 @@ function renderCardOffice(office) {
         <p class="font-semibold">⏰ Время работы:</p>
         <p class="text-gray-600">${escapeHTML(office.workTime || '')}</p>
       </div>
-      <button onclick="openWhatsApp('${safeMessage}')" class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg font-bold hover:bg-orange-600 transition mt-auto flex items-center justify-center">
-        <i class="ri-whatsapp-line mr-2"></i>Написать в WhatsApp
-      </button>
     </div>
   `;
 }
