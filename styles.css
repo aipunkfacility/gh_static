@@ -23,6 +23,30 @@ body {
   --dark: #1A2F5A;
 }
 
+/* Error Message Style */
+#global-error-msg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #dc2626; /* Red-600 */
+  color: white;
+  text-align: center;
+  padding: 12px;
+  z-index: 9999;
+  display: none;
+  font-weight: bold;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Floating WhatsApp Button Fix */
+.whatsapp-float {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  z-index: 1000 !important;
+}
+
 /* Layout */
 .fixed { position: fixed; }
 .relative { position: relative; }
@@ -352,11 +376,6 @@ body {
 
 .hero-bg img {
   object-fit: cover;
-  /* 
-     ТАК КАК КАРТИНКА ТЕПЕРЬ ПРАВИЛЬНАЯ (С ВОЗДУХОМ):
-     Возвращаем классическое центрирование.
-     Машина будет в центре, небо сверху, песок снизу.
-  */
   object-position: center center;
 }
 
