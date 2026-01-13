@@ -11,7 +11,7 @@ function ExcursionsSection(excursions) {
         <h2 class="text-4xl font-bold text-center mb-12 flex items-center justify-center gap-3">
           <i class="ri-compass-3-line text-blue-500"></i> Все экскурсии
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
           ${activeExcursions.map(excursion => {
             const title = excursion.title || '';
             const hasDetails = !!(excursion.details && excursion.details.trim());
@@ -30,7 +30,7 @@ function ExcursionsSection(excursions) {
             const detailsHtml = hasDetails ? formatServiceDetails(excursion.details) : '';
 
             return `
-              <div class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col h-full ${hasDetails ? 'is-clickable' : ''}"
+              <div class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col ${hasDetails ? 'is-clickable' : ''}"
                    ${hasDetails ? 'onclick="toggleServiceAccordion(this)"' : ''}>
                 
                 ${imageHtml}
