@@ -311,9 +311,9 @@ body {
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Hero начинается с самого верха экрана */
+/* Секция Hero - НАЧИНАЕТСЯ ПОД МЕНЮ */
 #hero {
-  margin-top: 0 !important;
+  margin-top: 72px; /* Высота вашего фиксированного меню */
 }
 
 /* Остальные секции имеют отступ сверху */
@@ -353,8 +353,8 @@ body {
   text-align: center;
   overflow: hidden;
   
-  /* 100vh = 100% от высоты экрана */
-  min-height: 100vh;
+  /* 100vh минус высота меню для идеального входа */
+  min-height: calc(100vh - 72px);
   
   display: flex;
   flex-direction: column;
@@ -385,7 +385,7 @@ body {
   background: transparent;
 }
 
-/* ТЕКСТ HERO - Стилизация по вашему запросу */
+/* ТЕКСТ HERO */
 .hero-text h1, 
 .hero-text p {
     color: #FFFFFF;
@@ -408,20 +408,12 @@ body {
   display: flex;
   flex-direction: column;
   
-  /* Разносим текст и кнопки вверх-вниз (самый безопасный вариант) */
   justify-content: space-between;
   
-  /* Отступы. 160px сверху, чтобы не прятаться за меню */
-  padding-top: 160px; 
+  padding-top: 120px; 
   padding-bottom: 80px;
   padding-left: 1rem;
   padding-right: 1rem;
-}
-
-@media (max-width: 768px) {
-  .hero-content {
-    padding-top: 140px; /* Для мобильных чуть меньше, но все еще достаточно */
-  }
 }
 
 /* Текст (вверху) */
@@ -452,7 +444,6 @@ body {
 
 /* --- ACCORDION FOR SERVICES --- */
 
-/* Карточка услуги с поддержкой аккордеона */
 .service-card {
   transition: all 0.3s ease;
 }
@@ -465,17 +456,14 @@ body {
   background-color: #fffaf7;
 }
 
-/* Стилизация подзаголовка/вступления (shortDescription) */
 .service-short-desc {
   transition: margin-bottom 0.3s ease;
 }
 
-/* Добавляем отступ при открытии, чтобы отделить вступление от деталей */
 .service-card.is-open .service-short-desc {
   margin-bottom: 1rem;
 }
 
-/* Анимация chevron */
 .accordion-chevron {
   transition: transform 0.3s ease;
 }
@@ -484,7 +472,6 @@ body {
   transform: rotate(180deg);
 }
 
-/* Контейнер раскрывающегося контента */
 .service-details-container {
   display: grid;
   grid-template-rows: 0fr;
@@ -500,7 +487,6 @@ body {
   min-height: 0;
 }
 
-/* Стилизация внутреннего контента деталей */
 .service-details-header {
   font-weight: 700;
   font-size: 1rem;
