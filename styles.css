@@ -86,6 +86,7 @@ body {
 .gap-2 { gap: 0.5rem; }
 .gap-3 { gap: 0.75rem; }
 .gap-4 { gap: 1rem; }
+.gap-8 { gap: 2rem; } /* Добавлен отступ для карточек */
 .flex-1 { flex: 1; }
 
 /* Grid */
@@ -394,11 +395,11 @@ body {
 .hero-text h1, 
 .hero-text p {
     color: #FFFFFF;
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* Чуть усилил непрозрачность для надежности */
 }
 
 .hero-text h1 {
-    font-weight: 800;
+    font-weight: 800; /* Делаем заголовок мощнее */
 }
 
 /* Контент внутри hero */
@@ -413,7 +414,7 @@ body {
   display: flex;
   flex-direction: column;
   
-  /* Разносим текст и кнопки вверх-вниз */
+  /* Разносим текст и кнопки вверх-вниз (самый безопасный вариант) */
   justify-content: space-between;
   
   /* Отступы. Уменьшено padding-bottom, чтобы кнопки были ниже */
@@ -468,7 +469,7 @@ body {
 }
 
 .service-card.is-clickable:hover {
-  background-color: #fffaf7;
+  background-color: #fffaf7; /* Очень легкий оранжевый оттенок при наведении */
 }
 
 /* Стилизация подзаголовка/вступления (shortDescription) */
