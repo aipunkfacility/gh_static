@@ -9,7 +9,7 @@
   --primary: #FF6400;
   --secondary: #2D5F3E;
   --dark: #1A2F5A;
-  /* Переменная для высоты меню */
+  /* Адаптивная высота меню для расчетов скролла */
   --header-height: 72px;
 }
 
@@ -21,6 +21,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* УМНЫЙ СКРОЛЛ: отступ сверху при клике по якорям (меню) 
+     Оставляем зазор, чтобы заголовки не липли к меню */
+  scroll-padding-top: calc(var(--header-height) + 20px);
 }
 
 body {
@@ -28,8 +31,6 @@ body {
   background-color: #f9fafb;
   color: #1f2937;
   line-height: 1.5;
-  /* Глобальный отступ, чтобы контент не нырял под меню */
-  padding-top: var(--header-height);
 }
 
 /* Error Message Style */
@@ -263,7 +264,7 @@ body {
 .mobile-menu {
   display: none;
   position: fixed;
-  top: var(--header-height);
+  top: var(--header-height); /* ИСПОЛЬЗУЕМ ПЕРЕМЕННУЮ ДЛЯ АДАПТИВНОСТИ */
   left: 0;
   right: 0;
   bottom: 0;
@@ -357,8 +358,8 @@ body {
   text-align: center;
   overflow: hidden;
   
-  /* Адаптивная высота ровно под размер окна за вычетом меню */
-  min-height: calc(100vh - var(--header-height));
+  /* 100vh = 100% от высоты экрана */
+  min-height: 100vh;
   
   display: flex;
   flex-direction: column;
@@ -415,7 +416,7 @@ body {
   /* Разносим текст и кнопки вверх-вниз (самый безопасный вариант) */
   justify-content: space-between;
   
-  /* Отступы из вашего стабильного файла */
+  /* Отступы */
   padding-top: 120px; 
   padding-bottom: 80px;
   padding-left: 1rem;
