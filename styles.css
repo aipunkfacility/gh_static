@@ -21,9 +21,8 @@
 
 html {
   scroll-behavior: smooth;
-  /* УМНЫЙ СКРОЛЛ: отступ сверху при клике по якорям (меню) 
-     Оставляем зазор, чтобы заголовки не липли к меню */
-  scroll-padding-top: calc(var(--header-height) + 20px);
+  /* УМНЫЙ СКРОЛЛ: секция стыкуется ровно под меню, без просветов */
+  scroll-padding-top: var(--header-height);
 }
 
 body {
@@ -264,7 +263,7 @@ body {
 .mobile-menu {
   display: none;
   position: fixed;
-  top: var(--header-height); /* ИСПОЛЬЗУЕМ ПЕРЕМЕННУЮ ДЛЯ АДАПТИВНОСТИ */
+  top: var(--header-height);
   left: 0;
   right: 0;
   bottom: 0;
