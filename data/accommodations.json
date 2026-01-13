@@ -17,7 +17,7 @@
     "atmosphere": "Наш большой бассейн с баром — центр жизни резорта. Днем здесь можно расслабиться с прохладным коктейлем, а по вечерам это место становится точкой сбора для гостей и друзей отеля.",
     "locationDescription": "Адрес: 121 Nguyễn Đình Chiểу. Море через дорогу. Вы находитесь в центре событий, но на своей закрытой зеленой территории.",
     "address": "121 Nguyễn Đình Chiểu, Ham Tien",
-    "image": "./images/og-preview.jpg",
+    "image": "./images/hotels/resort.webp",
     "isPopular": true,
     "isActive": true
   },
@@ -44,3 +44,4 @@
     "isActive": true
   }
 ]
+
