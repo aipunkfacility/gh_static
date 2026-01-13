@@ -31,8 +31,8 @@ function TransportSection(categories, transportItems) {
                 </div>
               </div>
 
-              <!-- Сетка карточек транспорта -->
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Сетка карточек транспорта. Добавлен класс items-start -->
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
                 ${items.map(item => renderCardTransport(item, categories)).join('')}
               </div>
             </div>
