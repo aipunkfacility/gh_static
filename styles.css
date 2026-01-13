@@ -389,11 +389,11 @@ body {
 .hero-text h1, 
 .hero-text p {
     color: #FFFFFF;
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* Чуть усилил непрозрачность для надежности */
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
 }
 
 .hero-text h1 {
-    font-weight: 800; /* Делаем заголовок мощнее */
+    font-weight: 800;
 }
 
 /* Контент внутри hero */
@@ -439,15 +439,6 @@ body {
   }
 }
 
-/* ВАЖНО: Высота карточек */
-.h-48 { height: 12rem; } /* ~192px */
-.h-56 { height: 14rem; } /* ~224px */
-.h-64 { height: 16rem; } /* ~256px */
-.object-cover {
-  object-fit: cover;
-  object-position: center;
-}
-
 /* Выравнивание карточек */
 .flex-grow { flex-grow: 1; }
 .mt-auto { margin-top: auto; }
@@ -465,7 +456,7 @@ body {
 }
 
 .service-card.is-clickable:hover {
-  background-color: #fffaf7; /* Очень легкий оранжевый оттенок при наведении */
+  background-color: #fffaf7;
 }
 
 /* Стилизация подзаголовка/вступления (shortDescription) */
