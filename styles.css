@@ -14,7 +14,7 @@ body {
   background-color: #f9fafb;
   color: #1f2937;
   line-height: 1.5;
-  /* ФИКС: Глобальный отступ под высоту меню для всех страниц */
+  /* Резервируем место под фиксированное меню высотой 72px */
   padding-top: 72px;
 }
 
@@ -403,11 +403,11 @@ body {
   display: flex;
   flex-direction: column;
   
-  /* Распределяем текст и кнопки */
+  /* Разносим текст и кнопки вверх-вниз */
   justify-content: space-between;
   
-  /* Умеренный отступ сверху, так как body уже отодвинут */
-  padding-top: 60px; 
+  /* Отступы */
+  padding-top: 120px; 
   padding-bottom: 80px;
   padding-left: 1rem;
   padding-right: 1rem;
