@@ -39,9 +39,10 @@
     "atmosphere": "Спокойная и тихая атмосфера, идеальная для зимовки или отпуска.",
     "locationDescription": "Центр Муйне, 5 минут до моря. Рядом магазины и кафе.",
     "address": "5 минут от моря, центр Муйне",
-    "image": "./images/og-preview.jpg",
+    "image": "./images/hotels/bungalow.webp",
     "isPopular": false,
     "isActive": true
   }
 ]
+
 
