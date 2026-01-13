@@ -16,7 +16,7 @@ function renderCardService(service) {
   const detailsHtml = hasDetails ? formatServiceDetails(service.details) : '';
 
   return `
-    <div class="service-card bg-white rounded-lg shadow-md hover:shadow-lg transition overflow-hidden flex flex-col h-full ${hasDetails ? 'is-clickable' : ''}" 
+    <div class="service-card bg-white rounded-lg shadow-md hover:shadow-lg transition overflow-hidden flex flex-col ${hasDetails ? 'is-clickable' : ''}" 
          ${hasDetails ? 'onclick="toggleServiceAccordion(this)"' : ''}>
       ${imageHtml}
       <div class="p-6 flex flex-col flex-grow">
@@ -69,7 +69,7 @@ function renderCardTransport(transport, categories) {
   const detailsHtml = hasDetails ? formatServiceDetails(transport.details) : '';
 
   return `
-    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col h-full ${isExpandable ? 'is-clickable' : ''}"
+    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col ${isExpandable ? 'is-clickable' : ''}"
          ${isExpandable ? 'onclick="toggleServiceAccordion(this)"' : ''}>
       ${topContent}
       <div class="bg-gray-100 p-4 border-b flex-shrink-0 flex justify-between items-center">
@@ -132,7 +132,7 @@ function renderCardAccommodation(acc) {
   const detailsHtml = hasDetails ? formatServiceDetails(acc.details) : '';
 
   return `
-    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col h-full ${hasDetails ? 'is-clickable' : ''}"
+    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col ${hasDetails ? 'is-clickable' : ''}"
          ${hasDetails ? 'onclick="toggleServiceAccordion(this)"' : ''}>
       ${imageHtml}
 
