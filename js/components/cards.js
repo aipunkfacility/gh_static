@@ -8,8 +8,8 @@ function renderCardService(service) {
   const safeMessage = escapeHTML(message).replace(/'/g, "\\'");
 
   const imageHtml = service.image 
-    ? `<div class="h-48 overflow-hidden border-b border-gray-100 flex-shrink-0">
-         <img src="${service.image}" alt="${escapeHTML(title)}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+    ? `<div class="overflow-hidden border-b border-gray-100 flex-shrink-0">
+         <img src="${service.image}" alt="${escapeHTML(title)}" class="w-full h-auto block hover:scale-105 transition-transform duration-500" loading="lazy">
        </div>`
     : '';
 
@@ -60,8 +60,8 @@ function renderCardTransport(transport, categories) {
   let topContent = '';
   if (transport.image) {
       topContent = `
-      <div class="h-56 overflow-hidden relative group flex-shrink-0">
-        <img src="${transport.image}" alt="${escapeHTML(title)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+      <div class="overflow-hidden relative group flex-shrink-0">
+        <img src="${transport.image}" alt="${escapeHTML(title)}" class="w-full h-auto block group-hover:scale-105 transition-transform duration-500" loading="lazy">
         ${category ? `<span class="absolute top-4 right-4 px-3 py-1 text-sm font-bold rounded-full shadow-md ${getCategoryColor(category.slug)}">${escapeHTML(category.title)}</span>` : ''}
       </div>`;
   }
@@ -121,8 +121,8 @@ function renderCardAccommodation(acc) {
   const safeMessage = escapeHTML(message).replace(/'/g, "\\'");
 
   const imageHtml = acc.image 
-    ? `<div class="h-64 overflow-hidden relative flex-shrink-0">
-         <img src="${acc.image}" alt="${escapeHTML(title)}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy">
+    ? `<div class="overflow-hidden relative flex-shrink-0">
+         <img src="${acc.image}" alt="${escapeHTML(title)}" class="w-full h-auto block hover:scale-105 transition-transform duration-700" loading="lazy">
          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 pt-12">
             <h3 class="text-white text-2xl font-bold drop-shadow-md">${escapeHTML(title)}</h3>
          </div>
