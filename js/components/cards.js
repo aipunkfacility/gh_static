@@ -123,8 +123,9 @@ function renderCardAccommodation(acc) {
   const imageHtml = acc.image 
     ? `<div class="overflow-hidden relative flex-shrink-0">
          <img src="${acc.image}" alt="${escapeHTML(title)}" class="w-full h-auto block hover:scale-105 transition-transform duration-700" loading="lazy">
-         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 pt-12">
-            <h3 class="text-white text-2xl font-bold drop-shadow-md">${escapeHTML(title)}</h3>
+         <!-- Полупрозрачная плашка под текстом -->
+         <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl" style="background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <h3 class="text-white text-xl font-bold drop-shadow-sm">${escapeHTML(title)}</h3>
          </div>
        </div>`
     : ''; 
