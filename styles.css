@@ -5,6 +5,20 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary: #FF6400;
+  --secondary: #2D5F3E;
+  --dark: #1A2F5A;
+  /* Адаптивная высота шапки */
+  --header-height: 72px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 64px;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -14,15 +28,8 @@ body {
   background-color: #f9fafb;
   color: #1f2937;
   line-height: 1.5;
-  /* Резервируем место под фиксированное меню высотой 72px */
-  padding-top: 72px;
-}
-
-/* Custom Colors */
-:root {
-  --primary: #FF6400;
-  --secondary: #2D5F3E;
-  --dark: #1A2F5A;
+  /* ГАРАНТИРОВАННЫЙ ОТСТУП ПОД МЕНЮ */
+  padding-top: var(--header-height);
 }
 
 /* Error Message Style */
@@ -256,7 +263,7 @@ body {
 .mobile-menu {
   display: none;
   position: fixed;
-  top: 72px;
+  top: var(--header-height);
   left: 0;
   right: 0;
   bottom: 0;
@@ -313,7 +320,7 @@ body {
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Остальные секции имеют отступ сверху */
+/* Секции - Отступ сверху */
 #popular,
 #excursions,
 #transport,
@@ -343,17 +350,19 @@ body {
   .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-/* HERO SECTION - ЧИСТАЯ ВЕРСИЯ */
+/* HERO SECTION - ПОЛНАЯ АДАПТИВНОСТЬ */
 .hero-section {
   position: relative;
   color: #fff;
   text-align: center;
   overflow: hidden;
-  /* Занимает весь экран за вычетом меню */
-  min-height: calc(100vh - 72px);
+  /* Высота ровно под экран за вычетом меню */
+  min-height: calc(100vh - var(--header-height));
   display: flex;
   flex-direction: column;
   padding: 0; 
+  /* Убираем любые смещения, так как body уже отодвинут */
+  margin-top: 0 !important;
 }
 
 .hero-bg {
@@ -403,10 +412,10 @@ body {
   display: flex;
   flex-direction: column;
   
-  /* Разносим текст и кнопки вверх-вниз */
+  /* Разносим текст и кнопки */
   justify-content: space-between;
   
-  /* Отступы */
+  /* Отступы внутри секции */
   padding-top: 120px; 
   padding-bottom: 80px;
   padding-left: 1rem;
