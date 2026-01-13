@@ -14,6 +14,8 @@ body {
   background-color: #f9fafb;
   color: #1f2937;
   line-height: 1.5;
+  /* ФИКС: Глобальный отступ под высоту меню для всех страниц */
+  padding-top: 72px;
 }
 
 /* Custom Colors */
@@ -311,11 +313,6 @@ body {
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Секция Hero - НАЧИНАЕТСЯ ПОД МЕНЮ */
-#hero {
-  margin-top: 72px; /* Высота вашего фиксированного меню */
-}
-
 /* Остальные секции имеют отступ сверху */
 #popular,
 #excursions,
@@ -352,10 +349,8 @@ body {
   color: #fff;
   text-align: center;
   overflow: hidden;
-  
-  /* 100vh минус высота меню для идеального входа */
+  /* Занимает весь экран за вычетом меню */
   min-height: calc(100vh - 72px);
-  
   display: flex;
   flex-direction: column;
   padding: 0; 
@@ -408,9 +403,11 @@ body {
   display: flex;
   flex-direction: column;
   
+  /* Распределяем текст и кнопки */
   justify-content: space-between;
   
-  padding-top: 120px; 
+  /* Умеренный отступ сверху, так как body уже отодвинут */
+  padding-top: 60px; 
   padding-bottom: 80px;
   padding-left: 1rem;
   padding-right: 1rem;
