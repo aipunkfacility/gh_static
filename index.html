@@ -77,7 +77,7 @@
         
         <!-- Десктопное меню -->
         <div class="hidden md:flex space-x-8">
-          <a href="#hero" class="font-semibold hover:text-primary transition">Главная</a>
+          <a href="#" class="font-semibold hover:text-primary transition">Главная</a>
           <a href="#excursions" class="font-semibold hover:text-primary transition">Экскурсии</a>
           <a href="#transport" class="font-semibold hover:text-primary transition">Транспорт</a>
           <a href="#accommodation" class="font-semibold hover:text-primary transition">Жилье</a>
@@ -87,12 +87,12 @@
         
         <!-- Кнопки справа -->
         <div class="flex items-center gap-3">
-          <!-- Кнопка WhatsApp (скрыта на мобильных) -->
+          <!-- Кнопка WhatsApp -->
           <button onclick="openWhatsApp()" class="hidden md:block bg-green-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-green-600 transition">
             <i class="ri-whatsapp-line mr-2 align-middle"></i>WhatsApp
           </button>
           
-          <!-- Гамбургер меню (только на мобильных) -->
+          <!-- Гамбургер меню -->
           <button id="mobile-menu-toggle" class="md:hidden hamburger" aria-label="Открыть меню">
             <span></span>
             <span></span>
@@ -104,7 +104,7 @@
     
     <!-- Мобильное выдвижное меню -->
     <div id="mobile-menu" class="mobile-menu">
-      <a href="#hero" onclick="toggleMobileMenu()">Главная</a>
+      <a href="#" onclick="toggleMobileMenu()">Главная</a>
       <a href="#excursions" onclick="toggleMobileMenu()">Экскурсии</a>
       <a href="#transport" onclick="toggleMobileMenu()">Транспорт</a>
       <a href="#accommodation" onclick="toggleMobileMenu()">Жилье</a>
@@ -160,4 +160,3 @@
   </script>
 </body>
 </html>
-
