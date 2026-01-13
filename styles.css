@@ -9,7 +9,7 @@
   --primary: #FF6400;
   --secondary: #2D5F3E;
   --dark: #1A2F5A;
-  /* Адаптивная высота шапки */
+  /* Переменная для высоты меню */
   --header-height: 72px;
 }
 
@@ -28,7 +28,7 @@ body {
   background-color: #f9fafb;
   color: #1f2937;
   line-height: 1.5;
-  /* ГАРАНТИРОВАННЫЙ ОТСТУП ПОД МЕНЮ */
+  /* Глобальный отступ, чтобы контент не нырял под меню */
   padding-top: var(--header-height);
 }
 
@@ -320,7 +320,7 @@ body {
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Секции - Отступ сверху */
+/* Остальные секции имеют отступ сверху */
 #popular,
 #excursions,
 #transport,
@@ -350,19 +350,19 @@ body {
   .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-/* HERO SECTION - ПОЛНАЯ АДАПТИВНОСТЬ */
+/* HERO SECTION - ЧИСТАЯ ВЕРСИЯ */
 .hero-section {
   position: relative;
   color: #fff;
   text-align: center;
   overflow: hidden;
-  /* Высота ровно под экран за вычетом меню */
+  
+  /* Адаптивная высота ровно под размер окна за вычетом меню */
   min-height: calc(100vh - var(--header-height));
+  
   display: flex;
   flex-direction: column;
   padding: 0; 
-  /* Убираем любые смещения, так как body уже отодвинут */
-  margin-top: 0 !important;
 }
 
 .hero-bg {
@@ -389,15 +389,15 @@ body {
   background: transparent;
 }
 
-/* ТЕКСТ HERO */
+/* ТЕКСТ HERO - Стилизация по вашему запросу */
 .hero-text h1, 
 .hero-text p {
     color: #FFFFFF;
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* Чуть усилил непрозрачность для надежности */
 }
 
 .hero-text h1 {
-    font-weight: 800;
+    font-weight: 800; /* Делаем заголовок мощнее */
 }
 
 /* Контент внутри hero */
@@ -412,10 +412,10 @@ body {
   display: flex;
   flex-direction: column;
   
-  /* Разносим текст и кнопки */
+  /* Разносим текст и кнопки вверх-вниз (самый безопасный вариант) */
   justify-content: space-between;
   
-  /* Отступы внутри секции */
+  /* Отступы из вашего стабильного файла */
   padding-top: 120px; 
   padding-bottom: 80px;
   padding-left: 1rem;
@@ -450,6 +450,7 @@ body {
 
 /* --- ACCORDION FOR SERVICES --- */
 
+/* Карточка услуги с поддержкой аккордеона */
 .service-card {
   transition: all 0.3s ease;
 }
@@ -459,17 +460,20 @@ body {
 }
 
 .service-card.is-clickable:hover {
-  background-color: #fffaf7;
+  background-color: #fffaf7; /* Очень легкий оранжевый оттенок при наведении */
 }
 
+/* Стилизация подзаголовка/вступления (shortDescription) */
 .service-short-desc {
   transition: margin-bottom 0.3s ease;
 }
 
+/* Добавляем отступ при открытии, чтобы отделить вступление от деталей */
 .service-card.is-open .service-short-desc {
   margin-bottom: 1rem;
 }
 
+/* Анимация chevron */
 .accordion-chevron {
   transition: transform 0.3s ease;
 }
@@ -478,6 +482,7 @@ body {
   transform: rotate(180deg);
 }
 
+/* Контейнер раскрывающегося контента */
 .service-details-container {
   display: grid;
   grid-template-rows: 0fr;
@@ -493,6 +498,7 @@ body {
   min-height: 0;
 }
 
+/* Стилизация внутреннего контента деталей */
 .service-details-header {
   font-weight: 700;
   font-size: 1rem;
