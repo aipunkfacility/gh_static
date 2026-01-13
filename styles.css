@@ -21,7 +21,8 @@
 
 html {
   scroll-behavior: smooth;
-  /* УМНЫЙ СКРОЛЛ: секция стыкуется ровно под меню, без просветов */
+  /* УМНЫЙ СКРОЛЛ: отступ сверху при клике по якорям (меню) 
+     Оставляем зазор, чтобы заголовки не липли к меню */
   scroll-padding-top: var(--header-height);
 }
 
@@ -393,11 +394,11 @@ body {
 .hero-text h1, 
 .hero-text p {
     color: #FFFFFF;
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* Чуть усилил непрозрачность для надежности */
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
 }
 
 .hero-text h1 {
-    font-weight: 800; /* Делаем заголовок мощнее */
+    font-weight: 800;
 }
 
 /* Контент внутри hero */
@@ -412,14 +413,21 @@ body {
   display: flex;
   flex-direction: column;
   
-  /* Разносим текст и кнопки вверх-вниз (самый безопасный вариант) */
+  /* Разносим текст и кнопки вверх-вниз */
   justify-content: space-between;
   
-  /* Отступы */
+  /* Отступы. Уменьшено padding-bottom, чтобы кнопки были ниже */
   padding-top: 120px; 
-  padding-bottom: 80px;
+  padding-bottom: 40px;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+/* Адаптивный отступ для мобильных */
+@media (max-width: 768px) {
+  .hero-content {
+    padding-bottom: 30px;
+  }
 }
 
 /* Текст (вверху) */
@@ -460,7 +468,7 @@ body {
 }
 
 .service-card.is-clickable:hover {
-  background-color: #fffaf7; /* Очень легкий оранжевый оттенок при наведении */
+  background-color: #fffaf7;
 }
 
 /* Стилизация подзаголовка/вступления (shortDescription) */
