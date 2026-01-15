@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import MainLayout from '../layouts/MainLayout.astro';
 import Hero from '../components/Hero.astro';
 import Excursions from '../sections/Excursions.astro';
 import Transport from '../sections/Transport.astro';
@@ -19,14 +19,14 @@ const title = siteMeta.mainTitle;
 const description = siteMeta.mainSubtitle;
 ---
 
-<BaseLayout title={title} description={description}>
+<MainLayout title={title} description={description}>
   <header class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-4 h-20 flex justify-between items-center">
       <a href="#" class="flex items-center gap-2">
         <i class="ri-landscape-line text-orange-500 text-3xl"></i>
         <div class="font-bold text-xl leading-none">
           <span class="text-orange-500">Green</span>Hill
-          <div class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Tours & Travel</div>
+          <div class="text-xxs text-gray-400 uppercase tracking-widest mt-1">Tours & Travel</div>
         </div>
       </a>
       
@@ -48,7 +48,7 @@ const description = siteMeta.mainSubtitle;
     </div>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center gap-8 text-2xl font-bold transition-all duration-300 opacity-0 pointer-events-none translate-x-full">
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center gap-8 text-2xl font-bold transition-all duration-300 opacity-0 pointer-events-none translate-x-full">
       <button id="mobile-menu-close" class="absolute top-6 right-6 text-4xl" aria-label="Закрыть меню">
         <i class="ri-close-line"></i>
       </button>
@@ -138,4 +138,4 @@ const description = siteMeta.mainSubtitle;
       });
     });
   </script>
-</BaseLayout>
+</MainLayout>
