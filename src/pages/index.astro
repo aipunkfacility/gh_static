@@ -137,17 +137,5 @@ const description = siteMeta.mainSubtitle;
     menuClose?.addEventListener('click', toggleMenu);
     menuLinks.forEach(link => link.addEventListener('click', toggleMenu));
 
-    // Smooth scroll for anchors
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href === '#') return;
-        const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
   </script>
 </MainLayout>
