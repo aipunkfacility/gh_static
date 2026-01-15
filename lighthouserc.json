@@ -1,10 +1,7 @@
 {
     "ci": {
         "collect": {
-            "staticDistDir": "./dist",
-            "url": [
-                "/gh_static/index.html"
-            ]
+            "staticDistDir": "./dist"
         },
         "assert": {
             "assertions": {
