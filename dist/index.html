@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO: Основные теги -->
+  <title>Экскурсии в Муйне и Фантьете, Трансфер, Отели | Green Hill Tours</title>
+  <meta name="description"
+    content="Организация отдыха в Муйне и Фантьете: джип-туры по дюнам, трансфер из аэропорта Хошимина и Камрани, аренда жилья и визы. Честные цены и русский сервис во Вьетнаме.">
+  <meta name="keywords"
+    content="Муйне, Вьетнам, Фантьет, экскурсии, джип тур, трансфер, такси, отели, виза, Green Hill Tours">
+
+  <!-- SEO: Для соцсетей (Open Graph) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Green Hill Tours">
+  <meta property="og:title" content="Экскурсии в Муйне и Фантьете | Green Hill Tours">
+  <meta property="og:description"
+    content="Джип-туры, трансферы из аэропорта, жилье и визы во Вьетнаме. Отдых без забот!">
+  <meta property="og:url" content="https://aipunkfacility.github.io/gh_static/">
+  <meta property="og:image" content="/gh_static/images/og-preview.jpg">
+
+  <!-- SEO: Schema.org (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "Green Hill Tours",
+    "description": "Организация отдыха в Муйне и Фантьете: джип-туры по дюнам, трансфер из аэропорта Хошимина, аренда жилья и визаран.",
+    "url": "https://aipunkfacility.github.io/gh_static/",
+    "telephone": "+84372733431",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "121 Nguyễn Đình Chiểu, Ham Tien",
+      "addressLocality": "Mui Ne, Phan Thiet",
+      "addressCountry": "VN"
+    },
+    "openingHours": "Mo-Su 08:00-22:00",
+    "priceRange": "$$"
+  }
+  </script>
+
+  <!-- SEO: Каноническая ссылка -->
+  <link rel="canonical" href="https://aipunkfacility.github.io/gh_static/">
+
+  <!-- Favicon / Иконки -->
+  <link rel="icon" type="image/svg+xml" href="/gh_static/my-favicon/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="/gh_static/my-favicon/favicon-96x96.png">
+  <link rel="shortcut icon" href="/gh_static/my-favicon/favicon.ico">
+  <link rel="apple-touch-icon" href="/gh_static/my-favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/gh_static/my-favicon/site.webmanifest">
+
+  <!-- Цвет темы -->
+  <meta name="apple-mobile-web-app-title" content="GreenHill">
+  <meta name="application-name" content="GreenHill">
+
+  <!-- Оптимизированные стили -->
+
+  <!-- FONTS PRELOAD -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- ИКОНКИ REMIX ICON -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- ANALYTICS PLACEHOLDER -->
+  <script type="module" crossorigin src="/gh_static/assets/index-BGMjs2Bb.js"></script>
+  <link rel="stylesheet" crossorigin href="/gh_static/assets/index-BDDsdnud.css">
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Глобальное сообщение об ошибке (скрыто по умолчанию) -->
+  <div id="global-error-msg">
+    Не удалось загрузить данные. Пожалуйста, проверьте интернет или напишите нам в WhatsApp.
+  </div>
+
+  <header id="header" class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+    <nav class="max-w-6xl mx-auto px-4 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <!-- Логотип: Листок -->
+          <i class="ri-plant-line text-secondary text-2xl"></i>
+          <span class="text-xl font-bold text-secondary">GreenHill<span class="text-primary">Tours</span></span>
+        </div>
+
+        <!-- Десктопное меню -->
+        <div class="hidden md:flex space-x-8">
+          <a href="#" class="font-semibold hover:text-primary transition">Главная</a>
+          <a href="#excursions" class="font-semibold hover:text-primary transition">Экскурсии</a>
+          <a href="#transport" class="font-semibold hover:text-primary transition">Транспорт</a>
+          <a href="#accommodation" class="font-semibold hover:text-primary transition">Жилье</a>
+          <a href="#services" class="font-semibold hover:text-primary transition">Сервисы</a>
+          <a href="#contacts" class="font-semibold hover:text-primary transition">Контакты</a>
+        </div>
+
+        <!-- Кнопки справа -->
+        <div class="flex items-center gap-3">
+          <!-- Кнопка WhatsApp -->
+          <button onclick="openWhatsApp()"
+            class="hidden md:block bg-green-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-green-600 transition">
+            <i class="ri-whatsapp-line mr-2 align-middle"></i>WhatsApp
+          </button>
+
+          <!-- Гамбургер меню -->
+          <button id="mobile-menu-toggle" class="hamburger" aria-label="Открыть навигационное меню">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Мобильное выдвижное меню -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="#" onclick="toggleMobileMenu()">Главная</a>
+      <a href="#excursions" onclick="toggleMobileMenu()">Экскурсии</a>
+      <a href="#transport" onclick="toggleMobileMenu()">Транспорт</a>
+      <a href="#accommodation" onclick="toggleMobileMenu()">Жилье</a>
+      <a href="#services" onclick="toggleMobileMenu()">Сервисы</a>
+      <a href="#contacts" onclick="toggleMobileMenu()">Контакты</a>
+      <div class="mt-4 px-4">
+        <button onclick="openWhatsApp(); toggleMobileMenu();"
+          class="w-full bg-green-500 text-white px-4 py-3 rounded-lg font-bold hover:bg-green-600 transition">
+          <i class="ri-whatsapp-line mr-2"></i>Написать в WhatsApp
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="app" class="min-h-screen">
+    <div class="flex flex-col items-center justify-center" style="height: 60vh; padding-top: 5rem;">
+      <div class="w-16 h-16 border-4 border-gray-200 border-t-primary rounded-full animate-spin"></div>
+      <p class="mt-6 text-lg text-gray-600 font-medium">Загружаем лучшие предложения...</p>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white py-8">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <div class="flex items-center justify-center space-x-2 mb-4">
+        <i class="ri-plant-line text-2xl"></i>
+        <span class="text-xl font-bold">GreenHill<span class="text-primary">Tours</span></span>
+      </div>
+      <p class="text-gray-300 mb-4">Муйне: Отдых без забот. Экскурсии, трансферы и отели во Вьетнаме.</p>
+      <p class="text-gray-400 text-sm">© 2026 Green Hill Tours</p>
+    </div>
+  </footer>
+
+  <!-- Плавающая кнопка WhatsApp -->
+  <button onclick="openWhatsApp()"
+    class="whatsapp-float fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full shadow-lg hover:scale-110 transition z-50 flex items-center justify-center"
+    aria-label="Написать нам в WhatsApp">
+    <i class="ri-whatsapp-line text-3xl"></i>
+  </button>
+
+</body>
+
+</html>
