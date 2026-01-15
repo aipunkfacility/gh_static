@@ -115,11 +115,17 @@ const baseUrl = import.meta.env.BASE_URL;
       }
 
       .service-details-container {
-        @apply grid grid-rows-[0fr] transition-all duration-300 overflow-hidden;
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 300ms ease-out;
       }
 
       .service-card.is-open .service-details-container {
-        @apply grid-rows-[1fr];
+        grid-template-rows: 1fr;
+      }
+
+      .service-details-content {
+        overflow: hidden;
       }
 
       .service-details-header {
@@ -140,7 +146,10 @@ const baseUrl = import.meta.env.BASE_URL;
 
       .service-details-list li::before {
         content: "\2022";
-        @apply absolute left-0 text-primary font-bold;
+        position: absolute;
+        left: 0;
+        color: var(--color-primary);
+        font-weight: bold;
       }
     }
 
