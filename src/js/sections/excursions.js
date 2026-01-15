@@ -21,8 +21,8 @@ export function ExcursionsSection(excursions) {
     const safeMessage = escapeHTML(message).replace(/'/g, "\\'");
 
     const imageHtml = excursion.image
-      ? `<div class="overflow-hidden group flex-shrink-0 relative">
-                   <img src="${excursion.image}" alt="${escapeHTML(title)}" width="600" height="400" class="w-full h-auto block group-hover:scale-105 transition-transform duration-500" loading="lazy">
+      ? `<div class="aspect-card overflow-hidden group flex-shrink-0 relative">
+                   <img src="${excursion.image}" alt="${escapeHTML(title)}" class="w-full h-full object-cover object-center block group-hover:scale-105 transition-transform duration-500" loading="lazy">
                    <div class="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-lg font-bold shadow-md">
                      ${escapeHTML(excursion.priceFrom)}
                    </div>

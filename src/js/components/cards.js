@@ -10,8 +10,8 @@ export function renderCardService(service) {
   const safeMessage = escapeHTML(message).replace(/'/g, "\\'");
 
   const imageHtml = service.image
-    ? `<div class="overflow-hidden border-b border-gray-100 flex-shrink-0">
-         <img src="${service.image}" alt="${escapeHTML(title)}" width="600" height="400" class="w-full h-auto block hover:scale-105 transition-transform duration-500" loading="lazy">
+    ? `<div class="aspect-card overflow-hidden border-b border-gray-100 flex-shrink-0">
+         <img src="${service.image}" alt="${escapeHTML(title)}" class="w-full h-full object-cover object-center block hover:scale-105 transition-transform duration-500" loading="lazy">
        </div>`
     : '';
 
@@ -62,8 +62,8 @@ export function renderCardTransport(transport, categories) {
   let topContent = '';
   if (transport.image) {
     topContent = `
-      <div class="overflow-hidden relative group flex-shrink-0">
-        <img src="${transport.image}" alt="${escapeHTML(title)}" width="600" height="400" class="w-full h-auto block group-hover:scale-105 transition-transform duration-500" loading="lazy">
+      <div class="aspect-card overflow-hidden relative group flex-shrink-0">
+        <img src="${transport.image}" alt="${escapeHTML(title)}" class="w-full h-full object-cover object-center block group-hover:scale-105 transition-transform duration-500" loading="lazy">
         ${category ? `<span class="absolute top-4 right-4 px-3 py-1 text-sm font-bold rounded-full shadow-md ${getCategoryColor(category.slug)}">${escapeHTML(category.title)}</span>` : ''}
       </div>`;
   }
@@ -123,8 +123,8 @@ export function renderCardAccommodation(acc) {
   const safeMessage = escapeHTML(message).replace(/'/g, "\\'");
 
   const imageHtml = acc.image
-    ? `<div class="overflow-hidden relative flex-shrink-0">
-         <img src="${acc.image}" alt="${escapeHTML(title)}" width="800" height="500" class="w-full h-auto block hover:scale-105 transition-transform duration-700" loading="lazy">
+    ? `<div class="aspect-video overflow-hidden relative flex-shrink-0">
+         <img src="${acc.image}" alt="${escapeHTML(title)}" class="w-full h-full object-cover object-center block hover:scale-105 transition-transform duration-700" loading="lazy">
          <!-- Полупрозрачная плашка: на всю ширину до низа с увеличенным заголовком -->
          <div class="absolute" style="bottom: 0; left: 0; right: 0; padding: 25px; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 10;">
             <h3 class="text-white text-xl md:text-2xl font-bold drop-shadow-sm">${escapeHTML(title)}</h3>

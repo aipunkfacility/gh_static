@@ -700,8 +700,20 @@ body {
   overflow: hidden;
 }
 
-.overflow-y-auto {
-  overflow-y: auto;
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-card {
+  aspect-ratio: 4 / 3;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+
+.object-center {
+  object-position: center;
 }
 
 /* Transitions */
