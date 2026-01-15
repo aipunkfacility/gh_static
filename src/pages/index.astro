@@ -24,16 +24,16 @@ const popularItems = [...popularExcursions, ...popularTransport];
 
 const title = siteMeta.mainTitle;
 const description = siteMeta.mainSubtitle;
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <MainLayout title={title} description={description}>
   <header class="bg-white shadow-sm fixed w-full top-0 z-50">
     <div class="max-w-6xl mx-auto px-4 h-20 flex justify-between items-center">
-      <a href="#" class="flex items-center gap-2">
-        <i class="ri-landscape-line text-orange-500 text-3xl"></i>
+      <a href="#" class="flex items-center gap-3">
+        <img src={baseUrl + "images/logo.svg"} alt="GreenHill Tours" class="h-14 w-auto" />
         <div class="font-bold text-xl leading-none">
-          <span class="text-orange-500">Green</span>Hill
-          <div class="text-xxs text-gray-400 uppercase tracking-widest mt-1">Tours & Travel</div>
+          <span class="text-orange-500">GreenHill</span> Tours
         </div>
       </a>
       
