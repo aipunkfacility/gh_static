@@ -47,13 +47,13 @@ const baseUrl = import.meta.env.BASE_URL;
       --color-dark: #1A2F5A;
     }
 
+    html {
+      scroll-behavior: smooth !important;
+      scroll-padding-top: 5rem;
+    }
+
     /* Base Styles */
     @layer base {
-      html {
-        scroll-behavior: smooth !important;
-        scroll-padding-top: 5rem;
-      }
-      
       body {
         font-family: 'Montserrat', sans-serif;
         background-color: theme('colors.gray.50');
