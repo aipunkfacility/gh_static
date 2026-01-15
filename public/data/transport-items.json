@@ -38,7 +38,7 @@
     ],
     "details": "✅ Преимущества:\n• Широкие колеса обеспечивают отличный зацеп.\n• Динамичный разгон.\n• Оснащен системой ABS для вашей безопасности.",
     "image": "./images/rentals/nvx.webp",
-    "isPopular": true,
+    "isPopular": false,
     "isActive": true
   },
   {
@@ -168,6 +168,3 @@
     "isActive": true
   }
 ]
-
-
-

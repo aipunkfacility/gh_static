@@ -15,6 +15,13 @@ import transportItems from '../../public/data/transport-items.json';
 import accommodations from '../../public/data/accommodations.json';
 import services from '../../public/data/services.json';
 
+import Popular from '../sections/Popular.astro';
+
+// Prepare Popular Items Mixed
+const popularExcursions = excursions.filter(e => e.isPopular && e.isActive).map(e => ({ ...e, type: 'excursion' }));
+const popularTransport = transportItems.filter(t => t.isPopular && t.isActive).map(t => ({ ...t, type: 'transport' }));
+const popularItems = [...popularExcursions, ...popularTransport];
+
 const title = siteMeta.mainTitle;
 const description = siteMeta.mainSubtitle;
 ---
@@ -31,6 +38,7 @@ const description = siteMeta.mainSubtitle;
       </a>
       
       <nav class="hidden md:flex gap-8 font-semibold text-gray-600">
+        <a href="#popular" class="hover:text-orange-500 transition">Популярное</a>
         <a href="#excursions" class="hover:text-orange-500 transition">Экскурсии</a>
         <a href="#transport" class="hover:text-orange-500 transition">Транспорт</a>
         <a href="#accommodations" class="hover:text-orange-500 transition">Жилье</a>
@@ -53,6 +61,7 @@ const description = siteMeta.mainSubtitle;
       <button id="mobile-menu-close" class="absolute top-6 right-6 text-4xl" aria-label="Закрыть меню">
         <i class="ri-close-line"></i>
       </button>
+      <a href="#popular" class="hover:text-orange-500">Популярное</a>
       <a href="#excursions" class="hover:text-orange-500">Экскурсии</a>
       <a href="#transport" class="hover:text-orange-500">Транспорт</a>
       <a href="#accommodations" class="hover:text-orange-500">Жилье</a>
@@ -66,6 +75,7 @@ const description = siteMeta.mainSubtitle;
 
   <main id="app">
     <Hero mainTitle={siteMeta.mainTitle} mainSubtitle={siteMeta.mainSubtitle} />
+    {popularItems.length > 0 && <Popular items={popularItems} categories={transportCategories} />}
     <Excursions excursions={excursions} />
     <Transport categories={transportCategories} transportItems={transportItems} />
     <Accommodations accommodations={accommodations} />

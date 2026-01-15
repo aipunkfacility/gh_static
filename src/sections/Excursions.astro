@@ -22,47 +22,22 @@ const regularExcursions = activeExcursions.filter(e => !e.isPopular);
 ---
 
 {activeExcursions.length > 0 && (
-  <div class="bg-white">
-    {popularExcursions.length > 0 && (
-      <section id="popular" class="py-16">
-        <div class="max-w-6xl mx-auto px-4">
-          <h2 class="text-4xl font-bold text-center mb-12 flex items-center justify-center gap-3">
-            <i class="ri-fire-line text-orange-500"></i> Популярное
-          </h2>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
-            {popularExcursions.map(excursion => (
-              <ServiceCard 
-                title={excursion.title}
-                image={excursion.image}
-                shortDescription={excursion.shortDescription}
-                details={excursion.details}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-    )}
-
-    {regularExcursions.length > 0 && (
-      <section id="excursions" class="py-16 border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-4">
-          <h2 class="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-3 text-gray-800">
-            <i class="ri-map-2-line text-blue-600"></i> Все экскурсии
-          </h2>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
-            {regularExcursions.map(excursion => (
-              <ServiceCard 
-                title={excursion.title}
-                image={excursion.image}
-                shortDescription={excursion.shortDescription}
-                details={excursion.details}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-    )}
-  </div>
+  <section id="excursions" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-3 text-gray-800">
+        <i class="ri-map-2-line text-blue-600"></i> Все экскурсии
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+        {activeExcursions.map(excursion => (
+          <ServiceCard 
+            title={excursion.title}
+            image={excursion.image}
+            shortDescription={excursion.shortDescription}
+            details={excursion.details}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
 )}
