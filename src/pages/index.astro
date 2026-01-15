@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Excursions from '../sections/Excursions.astro';
+import Transport from '../sections/Transport.astro';
+import Accommodations from '../sections/Accommodations.astro';
+import Services from '../sections/Services.astro';
+import Contacts from '../sections/Contacts.astro';
+
+// Data loading at build time
+import siteMeta from '../../public/data/site-meta.json';
+import excursions from '../../public/data/excursions.json';
+import transportCategories from '../../public/data/transport-categories.json';
+import transportItems from '../../public/data/transport-items.json';
+import accommodations from '../../public/data/accommodations.json';
+import services from '../../public/data/services.json';
+
+const title = siteMeta.mainTitle;
+const description = siteMeta.mainSubtitle;
+---
+
+<BaseLayout title={title} description={description}>
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-20 flex justify-between items-center">
+      <a href="#" class="flex items-center gap-2">
+        <i class="ri-landscape-line text-orange-500 text-3xl"></i>
+        <div class="font-bold text-xl leading-none">
+          <span class="text-orange-500">Green</span>Hill
+          <div class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Tours & Travel</div>
+        </div>
+      </a>
+      
+      <nav class="hidden md:flex gap-8 font-semibold text-gray-600">
+        <a href="#excursions" class="hover:text-orange-500 transition">Экскурсии</a>
+        <a href="#transport" class="hover:text-orange-500 transition">Транспорт</a>
+        <a href="#accommodations" class="hover:text-orange-500 transition">Жилье</a>
+        <a href="#contacts" class="hover:text-orange-500 transition">Контакты</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <button onclick="openWhatsApp()" class="hidden md:flex bg-green-500 text-white px-5 py-2 rounded-full font-bold hover:bg-green-600 transition items-center gap-2">
+          <i class="ri-whatsapp-line"></i> Написать
+        </button>
+        <button id="mobile-menu-toggle" class="md:hidden text-3xl" aria-label="Открыть меню">
+          <i class="ri-menu-line"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center gap-8 text-2xl font-bold transition-all duration-300 opacity-0 pointer-events-none translate-x-full">
+      <button id="mobile-menu-close" class="absolute top-6 right-6 text-4xl" aria-label="Закрыть меню">
+        <i class="ri-close-line"></i>
+      </button>
+      <a href="#excursions" class="hover:text-orange-500">Экскурсии</a>
+      <a href="#transport" class="hover:text-orange-500">Транспорт</a>
+      <a href="#accommodations" class="hover:text-orange-500">Жилье</a>
+      <a href="#contacts" class="hover:text-orange-500">Контакты</a>
+      <button onclick="openWhatsApp()" class="bg-green-500 text-white px-10 py-4 rounded-full font-bold mt-4 flex items-center gap-3">
+        <i class="ri-whatsapp-line"></i> Написать нам
+      </button>
+    </div>
+  </header>
+
+  <main id="app">
+    <Hero mainTitle={siteMeta.mainTitle} mainSubtitle={siteMeta.mainSubtitle} />
+    <Excursions excursions={excursions} />
+    <Transport categories={transportCategories} transportItems={transportItems} />
+    <Accommodations accommodations={accommodations} />
+    <Services services={services} />
+    <Contacts siteMeta={siteMeta} />
+  </main>
+
+  <script is:inline define:vars={{ siteMeta }}>
+    // Scripts for interactivity
+    
+    // WhatsApp
+    window.openWhatsApp = function(message) {
+      const defaultMessage = 'Здравствуйте! У меня вопрос';
+      const finalMessage = message || defaultMessage;
+      const phone = siteMeta.whatsappNumber || '84372733431';
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    };
+
+    // Accordion logic
+    window.toggleServiceAccordion = function(element) {
+      if (!element.classList.contains('is-clickable')) return;
+      const isOpen = element.classList.contains('is-open');
+      document.querySelectorAll('.service-card.is-open').forEach(card => {
+        if (card !== element) {
+          card.classList.remove('is-open');
+          card.setAttribute('aria-expanded', 'false');
+        }
+      });
+      if (isOpen) {
+        element.classList.remove('is-open');
+        element.setAttribute('aria-expanded', 'false');
+      } else {
+        element.classList.add('is-open');
+        element.setAttribute('aria-expanded', 'true');
+      }
+    };
+
+    // Mobile menu logic
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const menuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuLinks = mobileMenu.querySelectorAll('a');
+
+    function toggleMenu() {
+      const isVisible = mobileMenu.classList.contains('translate-x-0');
+      if (isVisible) {
+        mobileMenu.classList.remove('translate-x-0', 'opacity-100');
+        mobileMenu.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
+      } else {
+        mobileMenu.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
+        mobileMenu.classList.add('translate-x-0', 'opacity-100');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    menuToggle?.addEventListener('click', toggleMenu);
+    menuClose?.addEventListener('click', toggleMenu);
+    menuLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+    // Smooth scroll for anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</BaseLayout>

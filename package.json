@@ -1,26 +1,15 @@
 {
   "name": "gh_static",
-  "version": "1.0.0",
-  "description": "Одностраничный сайт туристического агентства Green Hill Tours в Муйне, Вьетнам.  \r Легкий, быстрый, с динамической загрузкой контента из JSON-файлов.",
-  "main": "index.js",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aipunkfacility/gh_static.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "type": "module",
-  "bugs": {
-    "url": "https://github.com/aipunkfacility/gh_static/issues"
+  "version": "2.0.0",
+  "description": "Green Hill Tours - Astro SSG website",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "homepage": "https://github.com/aipunkfacility/gh_static#readme",
-  "devDependencies": {
-    "vite": "^7.3.1"
+  "dependencies": {
+    "astro": "^5.16.9"
   }
 }

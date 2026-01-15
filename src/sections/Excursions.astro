@@ -1,0 +1,40 @@
+---
+import ServiceCard from '../components/ServiceCard.astro';
+
+interface Excursion {
+  id: string;
+  title: string;
+  image?: string;
+  shortDescription?: string;
+  details?: string;
+  isActive: boolean;
+}
+
+interface Props {
+  excursions: Excursion[];
+}
+
+const { excursions } = Astro.props;
+const activeExcursions = excursions.filter(e => e.isActive !== false);
+---
+
+{activeExcursions.length > 0 && (
+  <section id="excursions" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12 flex items-center justify-center gap-3">
+        <i class="ri-map-2-line text-orange-500"></i> Популярные экскурсии
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+        {activeExcursions.map(excursion => (
+          <ServiceCard 
+            title={excursion.title}
+            image={excursion.image}
+            shortDescription={excursion.shortDescription}
+            details={excursion.details}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+)}
