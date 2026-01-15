@@ -137,5 +137,33 @@ const description = siteMeta.mainSubtitle;
     menuClose?.addEventListener('click', toggleMenu);
     menuLinks.forEach(link => link.addEventListener('click', toggleMenu));
 
+
+    // Robust Smooth Scroll (JS Fallback)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#' || !href) return;
+        
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          
+          // Calculate exact position minus header height
+          const headerHeight = 80; // 5rem = 80px
+          const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+          const offsetPosition = elementPosition - headerHeight;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          if (mobileMenu && mobileMenu.classList.contains('translate-x-0')) {
+             toggleMenu();
+          }
+        }
+      });
+    });
   </script>
 </MainLayout>
