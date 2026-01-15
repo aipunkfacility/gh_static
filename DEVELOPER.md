@@ -1,73 +1,45 @@
 # Green Hill Tours - Developer Documentation
 
-This project is a modern, high-performance static website built with Vanilla JavaScript and the **Vite** build tool.
+Этот проект мигрирован на **Astro**, что позволило отказаться от сложного клиентского рендеринга в пользу статической генерации.
 
-## 🏗 Architecture Overview
+## 🏗 Архитектура
 
-The site follows a "Single Page" dynamic rendering approach:
+Проект следует классической структуре Astro:
 
-- **`index.html`**: The main entry point. Minimal HTML, serves as a shell.
-- **`src/js/main.js`**: Orchestrates data loading and section rendering.
-- **`src/js/services/`**: Contains core services like `dataService.js` (fetching & caching).
-- **`src/js/sections/`**: Modular section builders (Hero, Excursions, etc.).
-- **`src/js/components/`**: Reusable UI units like cards.
-- **`public/data/`**: JSON files containing all site content.
-- **`public/images/`**: Optimized assets.
+- **`src/pages/index.astro`**: Единственная точка входа. Здесь собираются все секции.
+- **`src/sections/`**: Логические блоки главной страницы. Каждый блок — это изолированный `.astro` компонент.
+- **`src/components/`**: Атомарные компоненты (например, `TransportCard.astro`), которые принимают данные через `Props`.
+- **`public/data/`**: Единый источник правды. Вся информация об экскурсиях, транспорте и жилье хранится в JSON-файлах.
+- **`src/layouts/MainLayout.astro`**: Глобальный HTML-скелет, включая стили Tailwind и базовые скрипты.
 
-## 🚀 Development
+## 🚀 Разработка
 
-### Prerequisites
+### Команды
 
-- Node.js (Latest LTS recommended)
-- npm
+- `npm run dev`: Запуск dev-сервера с HMR.
+- `npm run build`: Сборка статического сайта в папку `dist/`.
+- `npm run preview`: Просмотр собранного проекта локально.
 
-### Setup
+## 🛠 Технические особенности
 
-1. Clone the repository.
-2. Run `npm install` to install dependencies (Vite).
+- **Tailwind CSS 4**: Используется интеграция Tailwind 4. Конфигурация темы находится внутри `MainLayout.astro` в блоке `@theme`.
+- **Interactivity**: Логика аккордеонов и мобильного меню написана на нативном JS (в тегах `<script is:inline>`) для минимального размера бандла.
+- **Accessibility**: Все интерактивные элементы снабжены ARIA-ролями и поддерживают управление с клавиатуры.
 
-### Commands
+## 📦 Деплой (CI/CD)
 
-- `npm run dev`: Start local development server at `http://localhost:3000`.
-- `npm run build`: Generate optimized production build in `dist/`.
-- `npm run preview`: Preview the production build locally.
+Процесс полностью автоматизирован через **GitHub Actions**:
 
-## 🛠 Tech Stack Details
+1. При пуше в ветку `main` запускается workflow `.github/workflows/deploy.yml`.
+2. **Шаг 1: Build & Audit** — проект собирается и проходит проверку Lighthouse.
+3. **Шаг 2: Deploy** — если сборка успешна, сайт автоматически публикуется на GitHub Pages.
 
-- **Build Tool**: Vite 7+
-- **Styling**: Utility-first CSS (Vanilla) with CSS Variables.
-- **Icons**: Remix Icon (CDN).
-- **Security**: XSS protection via `escapeHTML`.
-- **Performance**:
-  - `sessionStorage` caching for data.
-  - Image lazy loading.
-  - Minimal JS payload.
+> [!NOTE]
+> Мы объединили деплой и проверку Lighthouse в одну цепочку, чтобы избежать конфликтов в очереди GitHub Actions.
 
-## 📁 Data Management
+## 📝 Обновление контента
 
-To update content, edit the JSON files in `public/data/`. The site will automatically reflect changes on reload (or HMR during dev).
-
-## 🚀 Deployment (GitHub Pages)
-
-This project is configured for **automated deployment** via GitHub Actions.
-
-### Setup Instructions
-
-1. **Push your changes**: Commit and push all files (including the new `.github` folder) to your `main` branch.
-2. **GitHub Settings**:
-    - Go to your repository on GitHub.
-    - Navigate to **Settings** > **Pages**.
-    - Under **Build and deployment** > **Source**, select **GitHub Actions** from the dropdown.
-3. **Automatic Build**: GitHub will now automatically build and deploy your site every time you push to `main`. You can monitor progress in the **Actions** tab.
-
-Your site will be live at: `https://<your-username>.github.io/gh_static/`
-
-### Manual Build
-
-If you ever need to build the site locally without GitHub Actions:
-
-1. Run `npm run build`.
-2. The ready-to-use files will be in the `dist/` directory.
+Для изменения цен или описаний просто отредактируйте соответствующие файлы в `public/data/`. Изменения применятся автоматически после пуша в репозиторий.
 
 ---
-*Created by Antigravity AI.*
+*Powered by Astro & Antigravity.*
