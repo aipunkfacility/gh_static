@@ -2,5 +2,20 @@
   "mainTitle": "Муйне: Отдых без забот",
   "mainSubtitle": "Мы поможем сделать ваш отдых комфортным и безопасным. Экскурсии, трансферы и байки от местных экспертов.",
   "responseTimeText": "Отвечаем быстро с 8:00 до 22:00",
-  "whatsappNumber": "84372733431"
+  "whatsappNumber": "84372733431",
+  "contacts": {
+    "telegramManager": "https://t.me/GreenHill_Support",
+    "telegramChannel": "https://t.me/GreenHill_tours",
+    "telegramBot": "https://t.me/GHtours_bot",
+    "offices": [
+      {
+        "address": "121 Nguyễn Đình Chiểu",
+        "mapUrl": "https://maps.app.goo.gl/CoBgDGcdES5Ktx1G6"
+      },
+      {
+        "address": "107 Nguyễn Đình Chiểu",
+        "mapUrl": "https://maps.app.goo.gl/yUP4APRYq7dLKTDn9"
+      }
+    ]
+  }
 }

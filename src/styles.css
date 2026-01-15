@@ -716,6 +716,27 @@ body {
   object-position: center;
 }
 
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+/* Focus States for Accessibility */
+.focus\:outline-none:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 /* Transitions */
 .transition {
   transition-property: all;

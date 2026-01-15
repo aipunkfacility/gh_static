@@ -106,20 +106,22 @@ async function loadData() {
   }
 }
 
-// Запуск
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    loadData();
-    // Инициализация мобильного меню
-    const menuToggle = document.getElementById('mobile-menu-toggle');
-    if (menuToggle) {
-      menuToggle.addEventListener('click', toggleMobileMenu);
-    }
-  });
-} else {
+/**
+ * Initializes the application.
+ */
+function init() {
   loadData();
+
+  // Mobile menu event listener
   const menuToggle = document.getElementById('mobile-menu-toggle');
   if (menuToggle) {
     menuToggle.addEventListener('click', toggleMobileMenu);
   }
+}
+
+// Start application when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
 }

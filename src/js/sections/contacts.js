@@ -1,6 +1,17 @@
 import { escapeHTML } from '../utils.js';
 
 export function ContactsSection(offices, siteMeta) {
+  // Use contacts from siteMeta if available, otherwise fallback to hardcoded
+  const contacts = siteMeta.contacts || {
+    telegramManager: 'https://t.me/GreenHill_Support',
+    telegramChannel: 'https://t.me/GreenHill_tours',
+    telegramBot: 'https://t.me/GHtours_bot',
+    offices: [
+      { address: '121 Nguyễn Đình Chiểu', mapUrl: 'https://maps.app.goo.gl/CoBgDGcdES5Ktx1G6' },
+      { address: '107 Nguyễn Đình Chiểu', mapUrl: 'https://maps.app.goo.gl/yUP4APRYq7dLKTDn9' }
+    ]
+  };
+
   return `
     <section id="contacts" class="py-16 bg-gray-50">
       <div class="max-w-4xl mx-auto px-4">
@@ -9,19 +20,19 @@ export function ContactsSection(offices, siteMeta) {
 
         <!-- СЕКЦИЯ TELEGRAM -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-          <a href="https://t.me/GreenHill_Support" target="_blank" 
+          <a href="${escapeHTML(contacts.telegramManager)}" target="_blank" rel="noopener noreferrer"
              class="bg-blue-500 hover:bg-blue-600 text-white py-4 px-6 rounded-xl font-bold flex items-center justify-center gap-3 transition shadow-md">
             <i class="ri-telegram-fill text-2xl"></i>
             Менеджер
           </a>
           
-          <a href="https://t.me/GreenHill_tours" target="_blank" 
+          <a href="${escapeHTML(contacts.telegramChannel)}" target="_blank" rel="noopener noreferrer"
              class="bg-blue-500 hover:bg-blue-600 text-white py-4 px-6 rounded-xl font-bold flex items-center justify-center gap-3 transition shadow-md">
             <i class="ri-notification-3-line text-2xl"></i>
             Наш канал
           </a>
 
-          <a href="https://t.me/GHtours_bot" target="_blank" 
+          <a href="${escapeHTML(contacts.telegramBot)}" target="_blank" rel="noopener noreferrer"
              class="bg-blue-500 hover:bg-blue-600 text-white py-4 px-6 rounded-xl font-bold flex items-center justify-center gap-3 transition shadow-md">
             <i class="ri-robot-2-line text-2xl"></i>
             Наш бот
@@ -30,17 +41,13 @@ export function ContactsSection(offices, siteMeta) {
 
         <!-- СЕКЦИЯ ОФИСЫ -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
-          <a href="https://maps.app.goo.gl/CoBgDGcdES5Ktx1G6" target="_blank" 
-             class="bg-orange-500 hover:bg-orange-600 text-white py-4 px-6 rounded-xl font-bold flex items-center justify-center gap-3 transition shadow-md text-center">
-            <i class="ri-map-pin-2-fill text-2xl"></i>
-            121 Nguyễn Đình Chiểu
-          </a>
-
-          <a href="https://maps.app.goo.gl/yUP4APRYq7dLKTDn9" target="_blank" 
-             class="bg-orange-500 hover:bg-orange-600 text-white py-4 px-6 rounded-xl font-bold flex items-center justify-center gap-3 transition shadow-md text-center">
-            <i class="ri-map-pin-2-fill text-2xl"></i>
-            107 Nguyễn Đình Chiểu
-          </a>
+          ${contacts.offices.map(office => `
+            <a href="${escapeHTML(office.mapUrl)}" target="_blank" rel="noopener noreferrer"
+               class="bg-orange-500 hover:bg-orange-600 text-white py-4 px-6 rounded-xl font-bold flex items-center justify-center gap-3 transition shadow-md text-center">
+              <i class="ri-map-pin-2-fill text-2xl"></i>
+              ${escapeHTML(office.address)}
+            </a>
+          `).join('')}
         </div>
 
         <!-- ГЛАВНАЯ КНОПКА WHATSAPP -->

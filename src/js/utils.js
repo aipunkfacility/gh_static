@@ -114,14 +114,19 @@ export function toggleServiceAccordion(element) {
 
   // Закрываем все остальные открытые карточки с поддержкой аккордеона
   document.querySelectorAll('.service-card.is-open').forEach(card => {
-    if (card !== element) card.classList.remove('is-open');
+    if (card !== element) {
+      card.classList.remove('is-open');
+      card.setAttribute('aria-expanded', 'false');
+    }
   });
 
   // Переключаем состояние текущей
   if (isOpen) {
     element.classList.remove('is-open');
+    element.setAttribute('aria-expanded', 'false');
   } else {
     element.classList.add('is-open');
+    element.setAttribute('aria-expanded', 'true');
   }
 }
 
@@ -135,10 +140,7 @@ export function smoothScroll(elementId) {
 
 // Глобальная функция для открытия WhatsApp чата
 export function openWhatsApp(message) {
-  const defaultMessage = (typeof CONFIG !== 'undefined' && CONFIG.WHATSAPP_DEFAULT_MESSAGE)
-    ? CONFIG.WHATSAPP_DEFAULT_MESSAGE
-    : 'Здравствуйте! У меня вопрос';
-
+  const defaultMessage = CONFIG.WHATSAPP_DEFAULT_MESSAGE || 'Здравствуйте! У меня вопрос';
   const finalMessage = message || defaultMessage;
 
   // Получаем номер из siteMeta или используем fallback
