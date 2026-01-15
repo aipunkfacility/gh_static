@@ -5,6 +5,7 @@ interface Category {
   id: string;
   slug: string;
   title: string;
+  badgeTitle?: string;
 }
 
 interface Props {
@@ -55,7 +56,7 @@ function getCategoryColor(slug: string) {
       />
       {category && (
         <span class={`absolute top-4 right-4 px-3 py-1 text-sm font-bold rounded-full shadow-md uppercase ${getCategoryColor(category.slug)}`}>
-          {category.title}
+          {category.badgeTitle || category.title}
         </span>
       )}
     </div>
