@@ -40,6 +40,12 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
 
+      - name: Upload production build for Beget
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-beget
+          path: ./dist
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
@@ -48,7 +54,7 @@ jobs:
         with:
           path: './dist'
 
-  deploy:
+  deploy_gh_pages:
     needs: build_and_audit
     environment:
       name: github-pages
@@ -58,3 +64,24 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  deploy_beget:
+    needs: build_and_audit
+    environment:
+      name: beget
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download production build
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-beget
+          path: ./dist
+
+      - name: Deploy to Beget via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ${{ secrets.BEGET_HOST }}
+          username: ${{ secrets.BEGET_USERNAME }}
+          password: ${{ secrets.BEGET_PASSWORD }}
+          server-dir: /ganjavagen.beget.tech/public_html/
+
